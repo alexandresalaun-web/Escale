@@ -410,6 +410,57 @@ table.cmp{width:100%;border-collapse:collapse;font-size:15px}
 .qpin i.on{outline:6px solid rgba(255,255,255,.2)}
 .qmv.leaf.leaflet-container{background:#0a0e2a;font:inherit}.qmv .leaflet-bar a{background:#161c44;color:#eef1ff;border-color:#262d5c}.qmv .leaflet-control-attribution{background:rgba(10,14,42,.8);color:#a9b2d8;font-size:11px;line-height:1.4}.qmv .leaflet-control-attribution a{color:#e3e8ff}
 @media(max-width:820px){.qmap{grid-template-columns:minmax(0,1fr)}.qmv{min-height:0}.qmv.leaf{height:340px}}
+
+/* comparateur en duel */
+#comparer{background:radial-gradient(120% 80% at 50% 0%,#1b2260 0%,var(--bg) 60%)}
+.swap-b{display:grid;place-items:center;width:46px;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--soft);color:var(--ink);transition:transform .3s var(--out),border-color .2s}
+.swap-b:hover{border-color:var(--pink);transform:rotate(180deg)}
+.duel{display:grid;gap:22px}
+.dhead{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:14px}
+.dcard{position:relative;height:220px;border-radius:22px;overflow:hidden;color:#fff;padding:18px 20px;display:flex;flex-direction:column;justify-content:flex-end;border:2px solid transparent;transition:border-color .3s}
+.dcard.lead{border-color:var(--pink)}
+.dcard>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dcard::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,10,30,.9),rgba(7,10,30,.1) 65%)}
+.dcard>*:not(img){position:relative;z-index:1}
+.dcode{position:absolute!important;top:12px;left:18px;font:900 44px/1 Archivo,sans-serif;font-stretch:125%;letter-spacing:-.04em;opacity:.9}
+.dcard.b .dcode{left:auto;right:18px}
+.dname{display:flex;align-items:center;gap:10px}.dname .flag{width:34px;height:25px}
+.dname b{display:block;font:800 26px/1.05 Archivo,sans-serif;font-stretch:112%}.dname span{font-size:14px;color:#d8ddf5}
+.dscore{position:absolute!important;right:18px;bottom:16px;text-align:right;line-height:1}
+.dcard.b .dscore{right:auto;left:auto}
+.dscore b{display:block;font:900 54px/1 Archivo,sans-serif;font-stretch:120%}
+.dcard.lead .dscore b{color:#ff6b9e}
+.dscore span{font-size:13px;color:#d8ddf5;font-weight:600}
+.dcard.b{align-items:flex-end;text-align:right}.dcard.b .dname{flex-direction:row-reverse}
+.dcard.b .dscore{left:18px;right:auto;text-align:left}
+.dvs{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:var(--pink);color:#fff;font:900 22px Archivo,sans-serif;font-stretch:120%;box-shadow:0 0 0 8px rgba(255,47,122,.15)}
+.drows{display:grid;gap:4px;padding:8px;border-radius:22px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.drow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(130px,auto) minmax(0,1.3fr) minmax(0,1fr);align-items:center;gap:12px;padding:10px 12px;border-radius:14px;transition:background .2s}
+.drow:hover{background:rgba(255,255,255,.04)}
+.drow.nob .dv.a{grid-column:1/3}.drow.nob .dv.b{grid-column:4/6;text-align:left}
+.drow.nob .dl{min-width:0}
+.dl{text-align:center;font-size:13.5px;color:var(--mute);font-weight:600}
+.dv{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dv.a{text-align:right}.dv.b{text-align:left}.dv.w{color:#5fe0a8}
+.dv.w::after{content:" ✓";font-size:12px}.dv.a.w::after{content:none}.dv.a.w::before{content:"✓ ";font-size:12px}
+.dbar{height:10px;border-radius:6px;background:rgba(255,255,255,.06);overflow:hidden;display:flex}
+.dbar.a{justify-content:flex-end}
+.dbar i{display:block;height:100%;width:calc(var(--s)*100%);border-radius:6px;background:#3a4280;transform-origin:var(--o,left);transition:transform .7s var(--out)}
+.dbar.a i{--o:right}.dbar.w i{background:linear-gradient(90deg,#5fe0a8,#3fc58d)}
+.duel.go .dbar i{animation:dgrow .8s var(--out) both}.duel.go .drow:nth-child(n) .dbar i{animation-delay:calc(var(--k,0)*1ms)}
+@keyframes dgrow{from{transform:scaleX(0)}}
+.duel.go .dcard.a{animation:dinL .6s var(--out) both}.duel.go .dcard.b{animation:dinR .6s var(--out) both}.duel.go .dvs{animation:dpop .5s var(--out) .2s both}
+@keyframes dinL{from{opacity:0;transform:translateX(-30px)}}@keyframes dinR{from{opacity:0;transform:translateX(30px)}}@keyframes dpop{from{opacity:0;transform:scale(.4) rotate(-20deg)}}
+.dverd{border-radius:22px;padding:22px;background:linear-gradient(135deg,rgba(255,47,122,.12),rgba(255,255,255,.02));border:1px solid rgba(255,47,122,.25)}
+.dlead{margin:0 0 14px;font:800 clamp(22px,2.6vw,30px)/1.15 Archivo,sans-serif;font-stretch:110%}
+.dpros{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.dpro h4{display:flex;align-items:center;gap:8px;margin:0 0 8px;font:700 16px Manrope,sans-serif}
+.dpro ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.dpro li{padding-left:22px;position:relative;font-size:15px}.dpro li::before{content:"";position:absolute;left:4px;top:.55em;width:8px;height:8px;border-radius:50%;background:#5fe0a8}
+@media(max-width:720px){.dhead{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}.dvs{display:none}.dcard{height:150px;padding:12px;border-radius:16px}.dcode{font-size:26px;top:8px;left:12px}.dcard.b .dcode{right:12px}.dname b{font-size:17px}.dname span{display:none}.dname .flag{display:none}.dscore b{font-size:36px}.dscore{bottom:12px;right:12px}.dcard.b .dscore{left:12px}
+ .drow,.drow.nob{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px 10px;padding:10px 6px}.dl{grid-column:1/-1;grid-row:1;font-size:12.5px}.dbar{grid-row:3}.drow .dv.b{text-align:right}.drow .dv.a{text-align:left}.dv.a.w::before{content:none}.dv.a.w::after{content:" ✓"}
+ .drow.nob .dv.a,.drow.nob .dv.b{grid-column:auto}.drow.nob .dv.b{text-align:right}.drow.nob .dv.a{text-align:left}.dpros{grid-template-columns:minmax(0,1fr)}.cmpsel select{min-width:0;flex:1}}
+@media(prefers-reduced-motion:reduce){.duel.go *{animation:none!important}}
 </style>
 </head>
 <body class="m">
@@ -492,7 +543,7 @@ table.cmp{width:100%;border-collapse:collapse;font-size:15px}
 </div>
 </section>
 
-<section class="band" id="comparer"><div class="wrap"><div class="dest-head"><h2>Comparer deux villes</h2></div><div class="cmpsel"><select id="cmpA" aria-label="Première ville"></select><span>contre</span><select id="cmpB" aria-label="Deuxième ville"></select></div><div class="scroll"><table class="cmp" id="cmpT"></table></div></div></section>
+<section class="band" id="comparer"><div class="wrap"><div class="dest-head"><h2>Comparer deux villes</h2></div><div class="cmpsel"><select id="cmpA" aria-label="Première ville"></select><button type="button" class="swap-b" id="cmpSw" aria-label="Inverser les deux villes"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"/></svg></button><select id="cmpB" aria-label="Deuxième ville"></select></div><div id="cmpT" class="duel"></div></div></section>
 <section class="band" id="destinations" style="background:var(--soft)">
 <div class="wrap">
 <div class="dest-head"><h2>Toutes les destinations</h2><span id="count" class="tag" style="background:var(--bg)"></span></div>
@@ -1229,10 +1280,32 @@ function calc(){const c=sel,hs=c.house,k=$("cHouse").value;let rent=(hs[k]||hs.r
 {const A=$("cmpA"),B=$("cmpB");const opts=C.map(c=>`<option value="${c.id}">${esc(c.city)}</option>`).join("");A.innerHTML=opts;B.innerHTML=opts;A.value="shanghai";B.value="hsinchu";
  const lvl=["","Facile","Moyen","Difficile"];
  function cmp(){const a=C.find(x=>x.id===A.value),b=C.find(x=>x.id===B.value);
-  const rows=[["Budget par mois",c=>(rangeOf(c)[0]+rangeOf(c)[1])/2,-1,(v,c)=>rngT(c)],["Chambre en colocation",c=>(c.house.room[0]+c.house.room[1])/2,-1,v=>eur(Math.round(v))],["Billet aller-retour (dès)",c=>c.fly[0],-1,eur],["Vol depuis Paris",c=>c.h,-1,(v,c)=>c.time+(c.direct?", direct":", escale")],["Soleil par an",c=>c.sun,1,v=>v.toLocaleString("fr-FR")+" h"],["Mois le plus froid",c=>Math.min(...c.temps),1,v=>v+" °C"],["Mois le plus chaud",c=>Math.max(...c.temps),0,v=>v+" °C"],["Trouver un logement",c=>c.house.lvl,-1,v=>lvl[v]],["Repas pas cher",c=>c.meal,-1,eur],["PVT possible",c=>c.pvt?1:0,1,v=>v?"Oui":"Non"],["Anglais suffit",c=>c.en?1:0,1,v=>v?"Oui":"Non"],["Risque",c=>0,0,(v,c)=>c.safety]];
-  let na=0,nb=0;rows.forEach(([l,f,dir])=>{const va=f(a),vb=f(b);if(dir&&va!==vb){if(dir>0?va>vb:va<vb)na++;else nb++}});
-  const hd=(c,n)=>`<div class="cph"><img src="img/${c.id}.jpg" alt="" loading="lazy"><span class="cpc">${esc(c.code)}</span><div class="cpn">${flagImg(c)} <span>${esc(c.city)}</span></div><span class="cps">${n} avantage${n>1?"s":""}</span></div>`;
-  $("cmpT").innerHTML=`<thead><tr><th></th><th>${hd(a,na)}</th><th>${hd(b,nb)}</th></tr></thead><tbody>${rows.map(([l,f,dir,fmt])=>{const va=f(a),vb=f(b),wa=dir&&va!==vb&&(dir>0?va>vb:va<vb),wb=dir&&va!==vb&&!wa;return `<tr><td>${esc(l)}</td><td class="${wa?"win":""}">${esc(fmt(va,a))}</td><td class="${wb?"win":""}">${esc(fmt(vb,b))}</td></tr>`}).join("")}</tbody>`}
+  const mid=c=>(rangeOf(c)[0]+rangeOf(c)[1])/2,rm=c=>(c.house.room[0]+c.house.room[1])/2,cold=c=>Math.min(...c.temps),hot=c=>Math.max(...c.temps),fr=n=>Math.round(n).toLocaleString("fr-FR");
+  /* [label, valeur, sens (1 plus haut gagne, -1 plus bas gagne, 0 neutre), format, barre?, phrase du gagnant] */
+  const rows=[
+   ["Budget par mois",mid,-1,(v,c)=>rngT(c),1,(w,l,d)=>`environ ${fr(Math.round(d/10)*10)} € de moins par mois`],
+   ["Chambre en colocation",rm,-1,v=>eur(Math.round(v)),1,(w,l,d)=>`une chambre environ ${fr(Math.round(d/10)*10)} € moins chère`],
+   ["Billet aller-retour",c=>c.fly[0],-1,v=>"dès "+eur(v),1,(w,l,d)=>`un billet ${fr(d)} € moins cher`],
+   ["Vol depuis Paris",c=>c.h+(c.direct?0:.5),-1,(v,c)=>c.time.replace("env. ","")+(c.direct?", direct":", escale"),1,(w,l)=>w.direct&&!l.direct?"un vol direct depuis Paris":"un vol plus court"],
+   ["Soleil par an",c=>c.sun,1,v=>fr(v)+" h",1,(w,l,d)=>`${fr(d)} h de soleil en plus par an`],
+   ["Repas pas cher",c=>c.meal,-1,eur,1,()=>"des repas moins chers"],
+   ["Mois le plus froid",cold,1,v=>v+" °C",0,w=>`un hiver plus doux (${cold(w)} °C au plus froid)`],
+   ["Mois le plus chaud",hot,0,v=>v+" °C",0],
+   ["Trouver un logement",c=>c.house.lvl,-1,v=>lvl[v],0,()=>"un logement plus facile à trouver"],
+   ["PVT possible",c=>c.pvt?1:0,1,v=>v?"Oui":"Non",0,()=>"le PVT pour rester travailler"],
+   ["Anglais suffit",c=>c.en?1:0,1,v=>v?"Oui":"Non",0,()=>"l'anglais suffit au quotidien"],
+   ["Risque",()=>0,0,(v,c)=>c.safety,0]];
+  let na=0,nb=0;const pa=[],pb=[];
+  const body=rows.map(([lab,f,dir,fmt,bar,ph])=>{const va=f(a),vb=f(b),wa=!!dir&&va!==vb&&(dir>0?va>vb:va<vb),wb=!!dir&&va!==vb&&!wa;
+   if(wa){na++;ph&&pa.push(ph(a,b,Math.abs(va-vb)))}if(wb){nb++;ph&&pb.push(ph(b,a,Math.abs(va-vb)))}
+   const mx=Math.max(va,vb)||1,ba=bar?Math.max(.06,va/mx):0,bb=bar?Math.max(.06,vb/mx):0;
+   return `<div class="drow${bar?"":" nob"}"><span class="dv a${wa?" w":""}">${esc(fmt(va,a))}</span>${bar?`<span class="dbar a${wa?" w":""}"><i style="--s:${ba.toFixed(3)}"></i></span>`:""}<span class="dl">${esc(lab)}</span>${bar?`<span class="dbar b${wb?" w":""}"><i style="--s:${bb.toFixed(3)}"></i></span>`:""}<span class="dv b${wb?" w":""}">${esc(fmt(vb,b))}</span></div>`}).join("");
+  const card=(c,n,o,side)=>`<div class="dcard ${side}${n>o?" lead":""}"><img src="img/${c.id}.jpg" alt="" loading="lazy"><span class="dcode">${esc(c.code)}</span><div class="dname">${flagImg(c)}<div><b>${esc(c.city)}</b><span>${esc(c.country)}</span></div></div><div class="dscore"><b class="num">${n}</b><span>point${n>1?"s":""}</span></div></div>`;
+  const pros=(c,p)=>`<div class="dpro"><h4>${flagImg(c)} Pour ${esc(c.city)}</h4>${p.length?`<ul>${p.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>`:`<p class="note2">Pas d'avantage net sur ces critères.</p>`}</div>`;
+  const lead=na===nb?"Égalité parfaite sur ces critères, à toi de trancher.":`${esc((na>nb?a:b).city)} l'emporte ${Math.max(na,nb)} à ${Math.min(na,nb)}.`;
+  const el=$("cmpT");el.innerHTML=`<div class="dhead">${card(a,na,nb,"a")}<div class="dvs" aria-hidden="true">VS</div>${card(b,nb,na,"b")}</div><div class="drows">${body}</div><div class="dverd"><p class="dlead">${lead}</p><div class="dpros">${pros(a,pa)}${pros(b,pb)}</div></div>`;
+  el.classList.remove("go");void el.offsetWidth;el.classList.add("go")}
+ $("cmpSw").addEventListener("click",()=>{const t=A.value;A.value=B.value;B.value=t;cmp()});
  A.addEventListener("change",cmp);B.addEventListener("change",cmp);cmp();}
 
 window.__renderSub=renderSub;
