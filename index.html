@@ -659,6 +659,7 @@ table.cmp{width:100%;border-collapse:collapse;font-size:15px}
 .ver .vg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
 .ver .vg>div{display:grid;gap:2px}.ver span{font-size:13px;color:var(--mute);font-weight:600}.ver b{font:800 19px Archivo,sans-serif}.ver small{font-size:12px;color:#8f98c9}
 .ver .note2 a{color:inherit}
+.card .row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);justify-content:stretch;gap:10px 12px}.card .row .rb{grid-column:1/-1}.card .row .rb b{font-size:18px}.card .row span:not(.rb):last-child{text-align:right}
 </style>
 </head>
 <body class="m">
@@ -1547,7 +1548,7 @@ function renderCards(){
  $("count").textContent=L.length+(L.length>1?" destinations":" destination");
  $("cards").innerHTML=L.length?L.map(c=>cardHTML(c)).join(""):`<div class="empty">Aucune destination ne correspond. Monte le budget ou enlève un filtre.</div>`;
 }
-function cardHTML(c){return `<button class="card" data-id="${c.id}" aria-current="${c===sel}"><span class="thumb"><img src="img/${c.id}-s.jpg" alt="" loading="lazy" decoding="async"><span class="code">${c.code}</span></span><span class="body"><span class="name">${flagImg(c)}<h3>${esc(c.city)}</h3></span><span class="meta">${esc(c.country)}, vol ${esc(c.time)}</span><span class="row"><span><b>${rangeOf(c).join("–")} €</b>par mois</span><span><b>${esc(eur(c.fly[0]))}</b>billet dès</span><span><b>${c.sun.toLocaleString("fr-FR")} h</b>de soleil</span></span></span></button>`}
+function cardHTML(c){return `<button class="card" data-id="${c.id}" aria-current="${c===sel}"><span class="thumb"><img src="img/${c.id}-s.jpg" alt="" loading="lazy" decoding="async"><span class="code">${c.code}</span></span><span class="body"><span class="name">${flagImg(c)}<h3>${esc(c.city)}</h3></span><span class="meta">${esc(c.country)}, vol ${esc(c.time)}</span><span class="row"><span class="rb"><b>${rangeOf(c).map(v=>v.toLocaleString("fr-FR")).join(" à ")} €</b>par mois</span><span><b>${esc(eur(c.fly[0]))}</b>billet dès</span><span><b>${c.sun.toLocaleString("fr-FR")} h</b>de soleil</span></span></span></button>`}
 function renderSim(c){const L=C.filter(x=>x!==c).sort((a,b)=>((a.reg!==c.reg)-(b.reg!==c.reg))*2000+Math.abs(total(a)-total(c))-Math.abs(total(b)-total(c))).slice(0,4);$("sim").innerHTML=L.map(cardHTML).join("");$("simTitle").textContent="Si tu hésites avec "+c.city}
 function renderQuick(){$("quick").innerHTML=C.slice(0,8).map(c=>`<button class="chip" data-id="${c.id}" aria-pressed="${c===sel}">${flagImg(c)}${esc(c.city)}</button>`).join("")}
 function select(c,anim){const first=!sel._shown;sel=c;c._shown=true;ARC=arcPts(PARIS,c,90);t0=performance.now();renderPass(c);renderFiche(c);window.__renderSub&&window.__renderSub(c);renderSim(c);renderCards();renderQuick();window.__boardSel&&window.__boardSel();if(!first)replay();if(anim)focus(c);if(location.hash!=="#"+c.id)history.replaceState(null,"","#"+c.id)}
