@@ -673,6 +673,21 @@ table.cmp{width:100%;border-collapse:collapse;font-size:15px}
 .yv-t{font-weight:700;font-size:14.5px;line-height:1.3;color:var(--ink);text-decoration:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .yv-t:hover{text-decoration:underline}
 .yv-m{font-size:12.5px;color:var(--mute)}
+/* titre Ton année lisible */
+.yr::before{background:linear-gradient(180deg,rgba(10,12,40,.35) 0%,rgba(10,12,40,.7) 26%,#0f1335 48%),var(--yrimg) center 35%/cover no-repeat}
+.yr h2{color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.55),0 6px 40px rgba(0,0,0,.5)}
+.yr h2 span{color:#ff6b9e}
+.yr-sub{color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+/* changement de ville plus doux */
+#warp{display:none!important}
+.swap #fScene>img{animation:cityIn .7s var(--out) both}
+.swap .post .over{animation:fade .5s var(--out) .1s both}
+@keyframes cityIn{from{opacity:.4;transform:scale(1.04)}}
+/* aperçu sans trou */
+.g3[data-show=apercu]{grid-auto-flow:row dense}
+.g3[data-show=apercu] #s-ver{grid-column:span 2}
+.g3[data-show=apercu] #s-climat{grid-column:1/-1}
+@media(max-width:600px){.g3[data-show=apercu] #s-ver{grid-column:auto}}
 </style>
 </head>
 <body class="m">
@@ -1567,7 +1582,7 @@ function renderSim(c){const L=C.filter(x=>x!==c).sort((a,b)=>((a.reg!==c.reg)-(b
 function renderQuick(){$("quick").innerHTML=C.slice(0,8).map(c=>`<button class="chip" data-id="${c.id}" aria-pressed="${c===sel}">${flagImg(c)}${esc(c.city)}</button>`).join("")}
 function select(c,anim){const first=!sel._shown;sel=c;c._shown=true;ARC=arcPts(PARIS,c,90);t0=performance.now();renderPass(c);renderFiche(c);window.__renderSub&&window.__renderSub(c);renderSim(c);renderCards();renderQuick();window.__boardSel&&window.__boardSel();if(!first)replay();if(anim)focus(c);if(location.hash!=="#"+c.id)history.replaceState(null,"","#"+c.id)}
 const warp=$("warp");let wtok=0;
-function travel(c,x,y,toTop){if(reduce||c===sel){select(c,true);if(toTop)scrollTo(0,0);return}
+function travel(c,x,y,toTop){if(true){select(c,true);if(toTop)scrollTo(0,0);return}
  const t=++wtok;warp.style.setProperty("--x",x+"px");warp.style.setProperty("--y",y+"px");
  warp.style.backgroundImage=`linear-gradient(160deg,rgba(255,47,122,.55),rgba(10,14,48,.88) 70%),url(img/${c.id}.jpg)`;$("wCode").textContent=c.code;$("wFrom").textContent=sel.code;$("wCity").textContent=c.city;$("wFlag").src=FLAGS[c.flag];$("wFlag").alt="";
  warp.className="";void warp.offsetWidth;warp.className="on";
@@ -1665,7 +1680,7 @@ $("fVids").addEventListener("click",e=>{const b=e.target.closest(".yv-p");if(!b)
  const base=c=>{const r=rangeOf(c);return [r[0],(r[0]+r[1])/2,r[1]][st.lvl]};
  const plan=c=>plans[c.id]||(plans[c.id]={});
  function render(c,anim){if(!c)return;cur=c;const E=ESC[c.id]||[],P=plan(c),ms=months(),b=base(c),fly=(c.fly[0]+c.fly[1])/2;
-  $("yrTitle").textContent=`Ton année à ${c.city}`;$("yr").style.setProperty("--yrimg",`url(img/${c.id}.jpg)`);$("yrKick").textContent=`${c.code} · ${c.country}`;
+  $("yrTitle").innerHTML=`Ton année à <span>${esc(c.city)}</span>`;$("yr").style.setProperty("--yrimg",`url(img/${c.id}.jpg)`);$("yrKick").textContent=`${c.code} · ${c.country}`;
   for(const m in P)if(!ms.includes(+m))delete P[m];
   let cum=0;const cols=ms.map((m,i)=>{const e=P[m]!=null?E[P[m]]:null,ec=e?(e[3][0]+e[3][1])/2:0,mc=b+ec+(i===0?fly:0);cum+=mc;return {m,i,e,ec,mc,cum,t:c.temps[m-1],rain:c.rain.includes(m-1)}});
   const total=cum,ami=Math.min(st.len,9)*400,nEsc=cols.filter(x=>x.e).length,warm=cols.reduce((a,x)=>x.t>a.t?x:a),cold=cols.reduce((a,x)=>x.t<a.t?x:a);
