@@ -508,6 +508,50 @@ table.cmp{width:100%;border-collapse:collapse;font-size:15px}
 .sc-go{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14.5px;color:#ff8db4}
 @media(max-width:820px){.hero{grid-template-columns:minmax(0,1fr);gap:12px}.whint{display:none}#wsvg{aspect-ratio:4/3}.wstage .scap{position:relative;max-width:none;margin-top:10px;bottom:auto}.wregs{width:100%;justify-content:space-between}.wregs button{padding:0 8px;font-size:13px}}
 @media(prefers-reduced-motion:reduce){.wpin.on .wr{animation:none}.warc-on.go{animation:none;stroke-dashoffset:0}.scap.in>*{animation:none}}
+
+/* haut de page : trouve ta ville */
+.sky{min-height:0}
+.sky>.wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);column-gap:clamp(24px,4vw,56px);align-items:center}
+.sky>.wrap>nav{grid-column:1/-1}
+.hero{display:block;padding-block:clamp(28px,5vh,56px) 24px}
+.hero h1{font-size:clamp(40px,4.8vw,68px)}
+.hero .lead{margin:14px 0 22px;max-width:40ch}
+.finder{display:grid;gap:16px;padding:20px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+.fr{display:grid;gap:8px}
+.fl{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;font-weight:600;color:#b9c0e6}
+.fl b{font:800 22px Archivo,sans-serif;color:#fff}
+#fB{-webkit-appearance:none;appearance:none;width:100%;height:8px;min-height:0;padding:0;border:0;box-shadow:none;border-radius:8px;background:linear-gradient(90deg,var(--pink) var(--p,50%),rgba(255,255,255,.12) var(--p,50%));outline:none;margin:6px 0}
+#fB::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:4px solid var(--pink);cursor:grab;box-shadow:0 2px 10px rgba(0,0,0,.4);transition:transform .15s}
+#fB::-webkit-slider-thumb:active{transform:scale(1.15)}
+#fB::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:4px solid var(--pink);cursor:grab}
+.fseg{display:flex;gap:6px;flex-wrap:wrap}
+.fseg button{border:1px solid rgba(255,255,255,.14);border-radius:10px;min-height:38px;padding:0 13px;background:transparent;color:#d8ddf5;font-weight:600;font-size:14px;transition:background .2s,color .2s,border-color .2s,transform .15s}
+.fseg button:hover{border-color:rgba(255,255,255,.35)}
+.fseg button:active{transform:scale(.96)}
+.fseg button[aria-pressed=true]{background:#eef1ff;color:#0e1230;border-color:#eef1ff}
+.fseg.multi button[aria-pressed=true]{background:var(--pink);border-color:var(--pink);color:#fff}
+.fres{padding-block:clamp(20px,4vh,48px) 24px;align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.fhead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;gap:12px}
+.fhead b{font:800 22px Archivo,sans-serif;color:#fff}.fhead a{font-size:14px;font-weight:600;color:#ff8db4;text-decoration:none}
+.fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-height:420px;align-content:start}
+.fcard{position:relative;height:150px;border:0;border-radius:18px;overflow:hidden;padding:0;color:#fff;text-align:left;background:#141a3e;cursor:pointer;transition:transform .25s var(--out),box-shadow .25s}
+.fcard:hover{transform:translateY(-4px);box-shadow:0 18px 30px -16px rgba(0,0,0,.7),0 0 0 2px var(--pink)}
+.fcard>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--out)}
+.fcard:hover>img{transform:scale(1.06)}
+.fcard::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,10,30,.92),rgba(7,10,30,.15) 70%)}
+.fcard>span{position:relative;z-index:1}
+.fc-code{position:absolute!important;top:10px;left:14px;font:900 24px/1 Archivo,sans-serif;font-stretch:120%}
+.fc-b{position:absolute!important;left:14px;right:14px;bottom:12px;display:grid;gap:4px}
+.fc-n{display:flex;align-items:center;gap:8px}.fc-n .flag{width:22px;height:16.5px}.fc-n b{font:800 19px Archivo,sans-serif}
+.fc-kv{display:flex;gap:4px 12px;flex-wrap:wrap;font-size:12.5px;font-weight:600;color:#d8ddf5}.fc-kv span:first-child{color:#fff}
+.fgrid.go .fcard,.fgrid.go .fmore{animation:fin .45s var(--out) both;animation-delay:calc(var(--i,0)*45ms)}
+@keyframes fin{from{opacity:0;transform:translateY(10px) scale(.98)}}
+.fmore{grid-column:1/-1;display:grid;place-items:center;min-height:44px;border-radius:14px;border:1px dashed rgba(255,255,255,.2);color:#d8ddf5;text-decoration:none;font-weight:600;font-size:14px}
+.fmore:hover{border-color:var(--pink);color:#fff}
+.fnone{grid-column:1/-1;display:grid;gap:4px;place-content:center;text-align:center;min-height:200px;border-radius:18px;border:1px dashed rgba(255,255,255,.2);color:#b9c0e6}.fnone b{color:#fff;font-size:17px}
+@media(max-width:900px){.sky>.wrap{grid-template-columns:minmax(0,1fr)}.fgrid{min-height:0}.fcard{height:130px}}
+@media(max-width:520px){.fgrid .fcard:nth-child(n+5){display:none}.fgrid{grid-template-columns:minmax(0,1fr)}.fcard{height:112px}.fseg button{padding:0 10px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.fgrid.go .fcard,.fgrid.go .fmore{animation:none}}
 </style>
 </head>
 <body class="m">
@@ -536,7 +580,13 @@ table.cmp{width:100%;border-collapse:collapse;font-size:15px}
 <div class="hero">
 <div>
 <h1>Choisis où partir étudier</h1>
-<p class="lead">Budget, billets d'avion, bourses, visa, climat, nourriture et vie étudiante : chaque destination d'échange ou de double diplôme, comparée au même endroit.</p>
+<p class="lead">Règle ce qui compte pour toi, les villes qui correspondent apparaissent tout de suite.</p>
+<form class="finder" id="finder" onsubmit="return false">
+<label class="fr"><span class="fl">Budget max par mois<b id="fBv" class="num"></b></span><input type="range" id="fB" min="500" max="2500" step="50" value="1200"></label>
+<div class="fr"><span class="fl">Soleil</span><div class="fseg" data-k="sun"><button type="button" data-v="0" aria-pressed="true">Peu importe</button><button type="button" data-v="2000">Ensoleillé</button><button type="button" data-v="2500">Très ensoleillé</button></div></div>
+<div class="fr"><span class="fl">Vol depuis Paris</span><div class="fseg" data-k="fly"><button type="button" data-v="99" aria-pressed="true">Peu importe</button><button type="button" data-v="3">Moins de 3 h</button><button type="button" data-v="13">Moins de 13 h</button></div></div>
+<div class="fr"><span class="fl">Bonus</span><div class="fseg multi" data-k="opt"><button type="button" data-v="en" aria-pressed="false">Anglais suffit</button><button type="button" data-v="pvt" aria-pressed="false">PVT possible</button><button type="button" data-v="safe" aria-pressed="false">Très sûr</button></div></div>
+</form>
 <div class="chips" id="quick" role="group" aria-label="Destinations rapides"></div>
 </div>
 <div class="stage">
@@ -558,12 +608,7 @@ table.cmp{width:100%;border-collapse:collapse;font-size:15px}
 </aside>
 </div>
 </div>
-<div class="wmap" id="wmap">
-<div class="wtop"><div class="wregs" role="group" aria-label="Zoomer sur une région"><button type="button" data-r="monde" aria-pressed="true">Monde</button><button type="button" data-r="Europe">Europe</button><button type="button" data-r="Asie">Asie</button><button type="button" data-r="Amériques">Amériques</button><button type="button" data-r="Océanie">Océanie</button></div><span class="whint">Clique sur une ville</span></div>
-<div class="wstage"><svg id="wsvg" role="group" aria-label="Carte du monde des 24 destinations"></svg>
-<a class="scap" id="scap" href="#fiche" aria-live="polite"><span class="sc-code"></span><span class="sc-top"><img class="flag sc-flag" alt=""><span><b class="sc-city"></b><span class="sc-ctry"></span></span></span><span class="sc-kv"><span>Budget par mois<b class="sc-bud num"></b></span><span>Soleil<b class="sc-sun num"></b></span><span>Vol<b class="sc-fly"></b></span></span><span class="sc-go">Voir la fiche <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-</div>
-</div>
+<div class="fres"><div class="fhead"><b id="fCount" class="num"></b><a href="#destinations" id="fAll">Tout voir</a></div><div class="fgrid" id="fGrid"></div></div>
 </div>
 </header>
 
@@ -1400,6 +1445,27 @@ addEventListener("hashchange",()=>{const c=C.find(x=>"#"+x.id===location.hash);i
  const small=()=>innerWidth<720;
  pick(C.find(c=>c.id==="shanghai")||C[0]);requestAnimationFrame(()=>region(small()?"Asie":"monde",true));
  let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{const on=document.querySelector('.wregs [aria-pressed="true"]');region(on?on.dataset.r:"monde",true)},150)});
+}}
+
+/* trouve ta ville en 10 secondes */
+{const grid=$("fGrid");if(grid){
+ const st={sun:0,fly:99,opt:new Set()},B=$("fB");
+ const safeOk=c=>/^(très )?faible/i.test(c.safety);
+ function run(){const max=+B.value;$("fBv").textContent=max.toLocaleString("fr-FR")+" €";
+  B.style.setProperty("--p",((max-B.min)/(B.max-B.min)*100).toFixed(1)+"%");
+  const ok=C.filter(c=>rangeOf(c)[0]<=max&&c.sun>=st.sun&&c.h<=st.fly&&(!st.opt.has("en")||c.en)&&(!st.opt.has("pvt")||c.pvt)&&(!st.opt.has("safe")||safeOk(c)))
+   .sort((a,b)=>(rangeOf(a)[0]+rangeOf(a)[1])-(rangeOf(b)[0]+rangeOf(b)[1]));
+  $("fCount").textContent=ok.length?`${ok.length} ville${ok.length>1?"s":""} pour toi`:"Aucune ville";
+  const show=ok.slice(0,6);
+  grid.innerHTML=show.length?show.map((c,i)=>`<button type="button" class="fcard" data-fid="${c.id}" style="--i:${i}"><img src="img/${c.id}.jpg" alt="" loading="lazy"><span class="fc-code">${esc(c.code)}</span><span class="fc-b"><span class="fc-n">${flagImg(c)}<b>${esc(c.city)}</b></span><span class="fc-kv"><span class="num">${esc(rngT(c))}</span><span>${c.sun.toLocaleString("fr-FR")} h de soleil</span><span>${esc(c.time.replace("env. ",""))}</span></span></span></button>`).join("")+(ok.length>6?`<a class="fmore" href="#destinations">+ ${ok.length-6} autre${ok.length-6>1?"s":""}</a>`:"")
+   :`<div class="fnone"><b>Rien ne passe avec ces réglages</b><span>Monte un peu le budget ou enlève un bonus.</span></div>`;
+  grid.classList.remove("go");void grid.offsetWidth;grid.classList.add("go")}
+ B.addEventListener("input",run);
+ document.querySelectorAll("#finder .fseg").forEach(g=>g.addEventListener("click",e=>{const bt=e.target.closest("button");if(!bt)return;const k=g.dataset.k;
+  if(k==="opt"){const on=bt.getAttribute("aria-pressed")!=="true";bt.setAttribute("aria-pressed",on);on?st.opt.add(bt.dataset.v):st.opt.delete(bt.dataset.v)}
+  else{g.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===bt));st[k]=+bt.dataset.v}run()}));
+ grid.addEventListener("click",e=>{const bt=e.target.closest(".fcard");if(!bt)return;const c=C.find(x=>x.id===bt.dataset.fid);if(c){select(c,true);document.getElementById("fiche").scrollIntoView({behavior:reduce?"auto":"smooth"})}});
+ run();
 }}
 /* scroll: reveal once, parallax */
 if(!reduce&&"IntersectionObserver" in window){
