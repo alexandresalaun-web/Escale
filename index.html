@@ -552,6 +552,7 @@ table.cmp{width:100%;border-collapse:collapse;font-size:15px}
 @media(max-width:900px){.sky>.wrap{grid-template-columns:minmax(0,1fr)}.fgrid{min-height:0}.fcard{height:130px}}
 @media(max-width:520px){.fgrid .fcard:nth-child(n+5){display:none}.fgrid{grid-template-columns:minmax(0,1fr)}.fcard{height:112px}.fseg button{padding:0 10px;font-size:13px}}
 @media(prefers-reduced-motion:reduce){.fgrid.go .fcard,.fgrid.go .fmore{animation:none}}
+.qlive{position:relative;margin:0 12px 12px;display:block;padding:10px 12px;border-radius:10px;background:rgba(255,47,122,.14);border:1px solid rgba(255,47,122,.35);color:#ffd0e0;font-size:13px;font-weight:600;text-decoration:none;text-align:center}.qlive:hover{background:rgba(255,47,122,.25)}
 </style>
 </head>
 <body class="m">
@@ -1172,6 +1173,7 @@ function renderQMap(c){const G=GEO[c.id],X=EXTRA[c.id],box=$("qMap");if(!G||!X||
  qs.forEach((q,i)=>{const a=pr(q.ll);s+=`<g class="qp" data-q="${i}"><circle cx="${a[0].toFixed(1)}" cy="${a[1].toFixed(1)}" r="16" class="qh" style="fill:${LVC[q.lv-1]}"/><circle cx="${a[0].toFixed(1)}" cy="${a[1].toFixed(1)}" r="8" style="fill:${LVC[q.lv-1]}"/><text x="${ql[i][0].toFixed(1)}" y="${ql[i][1].toFixed(1)}">${esc(q.n.split(" (")[0])}</text></g>`});
  s+=`<g class="qs"><line x1="20" y1="${H-22}" x2="${(20+bw).toFixed(1)}" y2="${H-22}"/><text x="20" y="${H-30}">${String(step).replace(".",",")} km</text></g>`;
  s+=`<g class="qleg">${LVT.map((t,i)=>`<circle cx="${(W>500?W-250:20)+i*86}" cy="${W>500?H-26:22}" r="5" style="fill:${LVC[i]}"/><text x="${(W>500?W-240:30)+i*86}" y="${W>500?H-22:26}">${t}</text>`).join("")}</g></svg>`;
+ if(!location.hostname.endsWith("github.io"))s+=`<a class="qlive" href="https://alexandresalaun-web.github.io/Escale/#${c.id}" target="_blank" rel="noopener">Plan simplifié ici. Voir la vraie carte sur le site en ligne</a>`;
  box.innerHTML=s;box.querySelectorAll(".qp").forEach(e=>e.addEventListener("mouseenter",()=>hi(e.dataset.q)));
 }
 const $=id=>document.getElementById(id);
