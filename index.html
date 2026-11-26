@@ -385,7 +385,7 @@ table.cmp{width:100%;border-collapse:collapse;font-size:15px}
 .g3 #s-carte{grid-column:1/-1}
 .qmap{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:16px;align-items:stretch}
 .qmv{position:relative;border-radius:16px;overflow:hidden;background:#0a0e2a;border:1px solid var(--line);min-height:320px}
-.qmv svg{display:block;width:100%;height:auto}
+.qmv:not(.leaf)>svg{display:block;width:100%;height:auto}
 .qmv.leaf{height:420px}
 .qg line{stroke:rgba(255,255,255,.04)}
 .ql{stroke:#a9b2d8;stroke-width:1.4;stroke-dasharray:4 6;opacity:.55;transition:opacity .2s}
@@ -408,7 +408,7 @@ table.cmp{width:100%;border-collapse:collapse;font-size:15px}
 .qpin span,.qcamp span{position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;font:600 13px Archivo,sans-serif;color:#fff;text-shadow:0 0 4px #0a0e2a,0 0 8px #0a0e2a}
 .qpin span{bottom:22px}.qcamp span{top:18px;font:600 12px Manrope,sans-serif;color:#e3e8ff}
 .qpin i.on{outline:6px solid rgba(255,255,255,.2)}
-.qmv .leaflet-container{background:#0a0e2a}
+.qmv.leaf.leaflet-container{background:#0a0e2a;font:inherit}.qmv .leaflet-bar a{background:#161c44;color:#eef1ff;border-color:#262d5c}.qmv .leaflet-control-attribution{background:rgba(10,14,42,.8);color:#a9b2d8;font-size:11px;line-height:1.4}.qmv .leaflet-control-attribution a{color:#e3e8ff}
 @media(max-width:820px){.qmap{grid-template-columns:minmax(0,1fr)}.qmv{min-height:0}.qmv.leaf{height:340px}}
 </style>
 </head>
@@ -989,22 +989,22 @@ const eur=n=>n.toLocaleString("fr-FR")+" €";
 /* carte des quartiers */
 let LST=0;const shortU=n=>n.split(",")[0].replace(/\s*\(.*\)/,"");
 const LVC=["#5fe0a8","#ffc46b","#ff6b9e"],LVT=["Abordable","Moyen","Cher"];
-function loadLeaflet(){if(LST)return;LST=1;const k=document.createElement("link");k.rel="stylesheet";k.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";document.head.appendChild(k);const s=document.createElement("script");s.src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";s.onload=()=>{LST=2;if(sel)renderQMap(sel)};s.onerror=()=>{LST=3};document.head.appendChild(s)}
+function loadLeaflet(){if(LST)return;LST=1;const k=document.createElement("link");k.rel="stylesheet";k.href="vendor/leaflet.css";document.head.appendChild(k);const s=document.createElement("script");s.src="vendor/leaflet.js";s.onload=()=>{LST=2;if(sel)renderQMap(sel)};s.onerror=()=>{LST=3};document.head.appendChild(s)}
 function renderQMap(c){const G=GEO[c.id],X=EXTRA[c.id],box=$("qMap");if(!G||!X||!box)return;
  const us=c.unis.map((u,i)=>({n:shortU(u[0]),ll:G.u[i]})).filter(u=>u.ll);
  const qs=X.quart.map((q,i)=>{const ll=G.q[i];if(!ll)return null;let near=null;for(const u of us){const k=kmBetween(ll,u.ll);if(!near||k<near.k)near={u,k}}return {n:q[0],d:q[1],ll,lv:ll[2],near,rent:qRent(c,ll[2])}}).filter(Boolean);
  const kmT=k=>k<1?"moins de 1 km":(k<10?k.toFixed(1).replace(".",","):Math.round(k))+" km";
  $("qList").innerHTML=qs.map((q,i)=>`<li data-q="${i}" tabindex="0"><span class="qdot" style="background:${LVC[q.lv-1]}"></span><div><b>${esc(q.n)}</b><span class="qr num">≈ ${q.rent[0].toLocaleString("fr-FR")} à ${eur(q.rent[1])} par mois</span><span class="qk">${esc(kmT(q.near.k))} de ${esc(q.near.u.n)}</span><span class="qd">${esc(q.d)}</span></div></li>`).join("");
- if(LST===0&&location.protocol.startsWith("http"))loadLeaflet();
+ if(LST===0&&(location.hostname.endsWith("github.io")||window.__forceLeaf))loadLeaflet();
  const hi=i=>{box.querySelectorAll("[data-q]").forEach(e=>e.classList.toggle("on",e.dataset.q==i));$("qList").querySelectorAll("li").forEach(e=>e.classList.toggle("on",e.dataset.q==i));if(box._lm&&qs[i])box._lm.panTo(qs[i].ll)};
  $("qList").onmouseover=e=>{const li=e.target.closest("li");if(li)hi(li.dataset.q)};$("qList").onfocusin=$("qList").onmouseover;
  if(LST===2&&window.L){if(box._lm){box._lm.remove();box._lm=null}box.innerHTML="";box.classList.add("leaf");
-  const m=L.map(box,{scrollWheelZoom:false,attributionControl:true,zoomControl:true});box._lm=m;
+  const m=L.map(box,{scrollWheelZoom:false,zoomSnap:.25,attributionControl:false,zoomControl:true});box._lm=m;L.control.attribution({prefix:false}).addTo(m);
   L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",{maxZoom:18,subdomains:"abcd",attribution:'&copy; OpenStreetMap, &copy; CARTO'}).addTo(m);
   const all=[];qs.forEach(q=>{L.polyline([q.ll,q.near.u.ll],{color:"#a9b2d8",weight:1.5,dashArray:"4 6",opacity:.8}).addTo(m)});
   us.forEach(u=>{all.push(u.ll);L.marker(u.ll,{icon:L.divIcon({className:"qcamp",html:`<i></i><span>${esc(u.n)}</span>`,iconSize:[14,14],iconAnchor:[7,7]})}).addTo(m)});
   qs.forEach((q,i)=>{all.push(q.ll);L.marker(q.ll,{icon:L.divIcon({className:"qpin",html:`<i data-q="${i}" style="background:${LVC[q.lv-1]}"></i><span data-q="${i}">${esc(q.n)}</span>`,iconSize:[18,18],iconAnchor:[9,9]})}).addTo(m)});
-  m.fitBounds(all,{padding:[46,46]});return}
+  const fit=()=>{if(box.clientWidth){m.invalidateSize();m.fitBounds(all,{padding:[46,46]})}};fit();if(box._ro)box._ro.disconnect();box._ro=new ResizeObserver(fit);box._ro.observe(box);return}
  box.classList.remove("leaf");
  const W=Math.round(Math.max(320,Math.min(640,box.clientWidth||innerWidth-72))),H=W>500?400:340,P=56,pts=[...qs.map(q=>q.ll),...us.map(u=>u.ll)],lat0=pts.reduce((s,p)=>s+p[0],0)/pts.length,cs=Math.cos(lat0*Math.PI/180);
  const xs=pts.map(p=>p[1]*cs),ys=pts.map(p=>-p[0]),x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys),sc=Math.min((W-2*P)/Math.max(x1-x0,1e-4),(H-2*P)/Math.max(y1-y0,1e-4));
