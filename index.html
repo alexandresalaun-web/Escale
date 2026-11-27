@@ -2130,7 +2130,7 @@ if(!reduce&&"IntersectionObserver" in window){
 }
 setTimeout(()=>document.body.classList.remove("m"),1600);
 
-setTimeout(()=>C.forEach(c=>{const i=new Image();i.src=`img/${c.id}.jpg`}),2500);
+document.addEventListener('pointerover',e=>{const t=e.target.closest&&e.target.closest('[data-fid],[data-id]');const id=t&&(t.dataset.fid||t.dataset.id);if(id&&!(window.__pre||(window.__pre={}))[id]){window.__pre[id]=1;const i=new Image();i.src=`img/${id}.jpg`}},{passive:true});
 
 {const names=new Set();C.forEach(c=>{PH[c.id].forEach(n=>names.add(n));PH2[c.id].slice(0,2).forEach(n=>names.add(n))});FLYC.forEach(n=>names.add(n));names.add("Taylor Van Riper");names.add("Nicolas J Leclercq");$("credits").textContent=[...names].sort((a,b)=>a.localeCompare(b,"fr")).join(", ")+".";}
 
