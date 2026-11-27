@@ -713,7 +713,7 @@ a.src{text-decoration:underline;text-underline-offset:3px}
 .pi p{margin:0;font-size:14px;line-height:1.5}
 .pi p b{display:block;font-size:12.5px;color:var(--mute);margin-bottom:2px}
 .pi em{display:block;font-style:normal;font-size:13px;font-weight:700;color:var(--pink2,#d6336c);margin-top:4px}
-.pi.pv{grid-row:span 2}
+
 .lvl{align-self:flex-start;font-size:12.5px;font-weight:800;padding:4px 10px;border-radius:999px;background:color-mix(in srgb,#2fb37a 16%,transparent);color:#1f8a5b}
 .lvl.warn{background:color-mix(in srgb,#f0a030 20%,transparent);color:#a8620a}
 .lvl.mid{background:color-mix(in srgb,#4a8cff 16%,transparent);color:#2f63c4}
@@ -722,7 +722,7 @@ a.src{text-decoration:underline;text-underline-offset:3px}
 .eras b{display:block;font-size:15px;margin-bottom:4px}
 .eras span{font-size:14px;line-height:1.5;color:var(--mute)}
 @media (max-width:900px){.prep{grid-template-columns:1fr 1fr}}
-@media (max-width:600px){.prep,.eras,.fseas{grid-template-columns:1fr}.pi.pv{grid-row:auto}}
+@media (max-width:600px){.prep,.eras,.fseas{grid-template-columns:1fr}}
 </style>
 </head>
 <body class="m">
@@ -1824,7 +1824,7 @@ function calc(){const c=sel,hs=c.house,k=$("cHouse").value;let rent=(hs[k]||hs.r
  const K=CTRY[c.country],visa=K?K.visa.f[m<=6?0:1]:0,ins=K?Math.round(K.ins[1]*m/12):0,month=Math.round(rent+food+out+tr),fly=Math.round((c.fly[0]+c.fly[1])/2),tripC=trips*TRIP[c.reg],total=month*m+fly+tripC+visa+ins;
  const ami=$("cAmi").checked?400*Math.min(m,10):0,era=$("cEra").checked&&K?ERAS[K.er][2]*m:0,aid=(+$("cAid").value||0)*m,rest=Math.max(0,total-ami-era-aid);
  const R=(l,v,cl="")=>`<div class="row2 ${cl}"><span>${l}</span><b>${eur(Math.round(v))}</b></div>`;
- $("cRes").innerHTML=`<div style="color:var(--mute);font-weight:700;font-size:13.5px">Par mois sur place</div><div class="big">${eur(month)}</div><div style="margin:14px 0 6px;font-weight:800">Sur ${m} mois</div>${R("Vie sur place",month*m)}${R("Billet aller-retour",fly)}${R(trips+" voyage"+(trips>1?"s":"")+" dans la région",tripC)}${visa?R("Visa et titre de séjour",visa):""}${ins?R("Assurance santé",ins):""}${R("Total",total)}${ami?R("Aide AMI","-"+ami):""}${era?R("Bourse Erasmus+ (estimation)","-"+era):""}${aid?R("Autres aides","-"+aid):""}${R("Reste à financer",rest,"fin")}<div class="row2"><span>Fourchette de la ville</span><b>${esc(rngT(c))}</b></div><p class="note2">Estimation à partir des données du site : loyer en milieu de fourchette, billet au prix habituel moyen, frais de visa officiels et assurance estimée.${$("cEra").checked&&K&&!ERAS[K.er][2]?" Pas de bourse Erasmus+ standard pour ce pays.":""}</p>`;
+ $("cRes").innerHTML=`<div style="color:var(--mute);font-weight:700;font-size:13.5px">Par mois sur place</div><div class="big">${eur(month)}</div><div style="margin:14px 0 6px;font-weight:800">Sur ${m} mois</div>${R("Vie sur place",month*m)}${R("Billet aller-retour",fly)}${R(trips+" voyage"+(trips>1?"s":"")+" dans la région",tripC)}${visa?R("Visa et titre de séjour",visa):""}${ins?R("Assurance santé",ins):""}${R("Total",total)}${ami?R("Aide AMI","-"+ami):""}${era?R("Bourse Erasmus+ (estimation)","-"+era):""}${aid?R("Autres aides","-"+aid):""}${R("Reste à financer",rest,"fin")}<div class="row2"><span>Fourchette de la ville</span><b>${esc(rngT(c))}</b></div><p class="note2">Estimation à partir des données du site : loyer en milieu de fourchette, billet au prix habituel moyen, frais de visa arrondis et assurance estimée.${$("cEra").checked&&K&&!ERAS[K.er][2]?" Pas de bourse Erasmus+ standard pour ce pays.":""}</p>`;
  $("cRes").querySelectorAll(".row2 b").forEach(b=>{b.textContent=b.textContent.replace("--","-")});
 }
 ["cHouse","cFood","cOut","cMonths","cTrips","cAmi","cEra","cAid"].forEach(id=>$(id).addEventListener("input",calc));
