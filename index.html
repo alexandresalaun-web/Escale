@@ -785,6 +785,26 @@ a.src{text-decoration:underline;text-underline-offset:3px}
 
 .eco-r{display:table;margin-top:6px;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700;background:color-mix(in srgb,#f5a524 18%,transparent);color:light-dark(#8a5300,#ffcf7a)}
 .eco-warn{margin:0 0 14px;padding:12px 14px;border-radius:12px;font-size:14px;line-height:1.5;background:color-mix(in srgb,#f5a524 12%,transparent);border:1px solid color-mix(in srgb,#f5a524 35%,transparent)}
+
+.g3 .s-glance{grid-column:1/-1;padding:0;overflow:hidden;background:var(--soft2)}
+.g3[data-show=apercu] .s-glance{display:grid}
+.gl-k{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.gk{padding:18px 22px;display:flex;flex-direction:column;gap:2px}
+.gk+.gk{border-left:1px solid var(--line)}
+.gk span{font-size:13px;color:var(--mute);font-weight:600}
+.gk b{font:800 28px/1.15 Archivo,sans-serif;font-stretch:115%;letter-spacing:-.01em}
+.gk small{font-size:12.5px;color:var(--mute)}
+.gl-p{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:0}
+.gp{position:relative;margin:0;height:260px;overflow:hidden}
+.gp img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--out)}
+.gp:hover img{transform:scale(1.04)}
+.gp-alt img{object-position:20% 70%}
+.gp::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(8,10,30,.88))}
+.gp figcaption{position:absolute;left:18px;right:18px;bottom:16px;z-index:1;display:flex;flex-direction:column;gap:4px;color:#fff}
+.gp figcaption b{font:800 18px/1.2 Archivo,sans-serif}
+.gp figcaption span{font-size:13.5px;line-height:1.4;opacity:.9}
+@media(max-width:900px){.gl-k{grid-template-columns:repeat(2,minmax(0,1fr))}.gk:nth-child(3){border-left:0}.gk:nth-child(n+3){border-top:1px solid var(--line)}.gl-p{grid-template-columns:1fr}.gp{height:200px}}
+@media(prefers-reduced-motion:reduce){.gp img{transition:none}}
 </style>
 </head>
 <body class="m">
@@ -847,14 +867,13 @@ a.src{text-decoration:underline;text-underline-offset:3px}
 </div>
 </header>
 
-<div class="mq" aria-hidden="true"><div class="mq-t" id="mqT"></div></div>
 <section class="band" id="fiche">
 <div class="wrap">
 <div class="post tilt" id="fPost"><div id="fScene"></div><div class="over"><img class="flag" id="fFlag" alt="" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBpZD0iZmxhZy1pY29ucy1jbiIgdmlld0JveD0iMCAwIDY0MCA0ODAiPgogIDxkZWZzPgogICAgPHBhdGggaWQ9ImNuLWEiIGZpbGw9IiNmZjAiIGQ9Ik0tLjYuOCAwLTEgLjYuOC0xLS4zaDJ6Ii8+CiAgPC9kZWZzPgogIDxwYXRoIGZpbGw9IiNlZTFjMjUiIGQ9Ik0wIDBoNjQwdjQ4MEgweiIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2NuLWEiIHdpZHRoPSIzMCIgaGVpZ2h0PSIyMCIgdHJhbnNmb3JtPSJtYXRyaXgoNzEuOTk5MSAwIDAgNzIgMTIwIDEyMCkiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNjbi1hIiB3aWR0aD0iMzAiIGhlaWdodD0iMjAiIHRyYW5zZm9ybT0ibWF0cml4KC0xMi4zMzU2MiAtMjAuNTg3MSAyMC41ODY4NCAtMTIuMzM1NzcgMjQwLjMgNDgpIi8+CiAgPHVzZSB4bGluazpocmVmPSIjY24tYSIgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiB0cmFuc2Zvcm09Im1hdHJpeCgtMy4zODU3MyAtMjMuNzU5OTggMjMuNzU5NjggLTMuMzg1NzggMjg4IDk1LjgpIi8+CiAgPHVzZSB4bGluazpocmVmPSIjY24tYSIgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiB0cmFuc2Zvcm09Im1hdHJpeCg2LjU5OTEgLTIzLjA3NDkgMjMuMDc0NiA2LjU5OTE5IDI4OCAxNjgpIi8+CiAgPHVzZSB4bGluazpocmVmPSIjY24tYSIgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiB0cmFuc2Zvcm09Im1hdHJpeCgxNC45OTkxIC0xOC43MzU1NyAxOC43MzUzMyAxNC45OTkyOSAyNDAgMjE2KSIvPgo8L3N2Zz4K"><h2><span id="fCity"></span><span class="ctry" id="fCountry"></span></h2></div></div>
 <div class="intro"><p id="fVibe"></p><div class="tags" id="fTags"></div></div>
 <div class="tabs" role="tablist" aria-label="Sections de la ville" id="tabs"><button role="tab" data-t="apercu" aria-selected="true">Aperçu</button><button role="tab" data-t="logement" aria-selected="false">Logement</button><button role="tab" data-t="budget" aria-selected="false">Budget</button><button role="tab" data-t="demarches" aria-selected="false">Démarches</button><button role="tab" data-t="vie" aria-selected="false">Vie étudiante</button><button role="tab" data-t="unis" aria-selected="false">Universités</button></div>
 <div class="g3 tilt" id="g3" data-show="apercu">
-<div class="panel" data-tab="apercu" id="s-budget"><h3><svg><use href="#i-wallet"/></svg>Budget mensuel</h3><div class="total" id="fTotal"></div><div class="bars" id="fBars"></div><p class="fact note">Loyer calculé pour une chambre en colocation.</p></div>
+<div class="panel s-glance" data-tab="apercu" id="s-glance"><div class="gl-k" id="glK"></div><div class="gl-p" id="glP"></div></div><div class="panel" data-tab="apercu" id="s-budget"><h3><svg><use href="#i-wallet"/></svg>Budget mensuel</h3><div class="total" id="fTotal"></div><div class="bars" id="fBars"></div><p class="fact note">Loyer calculé pour une chambre en colocation.</p></div>
 <div class="panel" data-tab="apercu" id="s-vol"><div class="ill" id="fFlyIll"></div><h3><svg><use href="#i-plane"/></svg>Billets d'avion</h3><div id="fFly"></div></div>
 <div class="panel" data-tab="apercu budget" id="s-ver"><h3><svg><use href="#i-coin"/></svg>Repères vérifiés</h3><div class="ver" id="fVer"></div></div><div class="panel" data-tab="apercu" id="s-visa"><h3><svg><use href="#i-pass"/></svg>Visa et carrière</h3><div id="fVisa"></div></div>
 <div class="panel s2" data-tab="logement" id="s-logement"><div class="ill tall" id="fHouseIll"></div><h3><svg><use href="#i-home"/></svg>Logement</h3><div id="fHouse"></div></div>
@@ -1904,6 +1923,9 @@ function renderFiche(c){
  $("fTotal").innerHTML=`${esc(rngT(c))}<br><small>par mois, de économe à confortable</small>`;
  $("fBars").innerHTML=`<div class="note2" style="margin:0 0 4px">Détail pour un budget moyen (${esc(eur(T))})</div>`+c.cost.map((v,i)=>`<div class="bar"><span>${lab[i]}</span><span><i style="--k:${i};width:${(v/c.cost[0]*100).toFixed(1)}%;${i?"background:color-mix(in srgb,var(--blue) 42%,transparent)":""}"></i></span><span>${esc(eur(v))}</span></div>`).join("");
  const fi=C.indexOf(c)%6,ph=(f,cr,alt)=>`<img src="img/${f}" alt="${esc(alt)}" loading="lazy" decoding="async">`;$("fFlyIll").innerHTML=ph(`fly${fi}.jpg`,FLYC[fi],"Vue d'avion");$("fFoodIll").innerHTML=ph(`${c.id}-food.jpg`,PH2[c.id][0],"Cuisine à "+c.city);$("fHouseIll").innerHTML=ph(`${c.id}-home.jpg`,PH2[c.id][1],"Logement");$("fNight").innerHTML=`<img src="img/${c.id}-v.jpg" alt="Ambiance à ${esc(c.city)}" loading="lazy" decoding="async">`;
+ {const ok=new Set(["amsterdam-clim.jpg", "bangkok-clim.jpg", "barcelone-clim.jpg", "berlin-clim.jpg", "buenosaires-clim.jpg", "copenhague-clim.jpg", "dublin-clim.jpg", "hongkong-clim.jpg", "hsinchu-clim.jpg", "lisbonne-clim.jpg", "londres-clim.jpg", "melbourne-clim.jpg", "mexico-clim.jpg", "milan-clim.jpg", "montreal-clim.jpg", "newyork-clim.jpg", "pekin-clim.jpg", "seoul-clim.jpg", "shanghai-clim.jpg", "singapour-clim.jpg", "sydney-clim.jpg", "taipei-clim.jpg", "tokyo-clim.jpg", "vancouver-clim.jpg"]),alt=f=>ok.has(f)?f:c.id+".jpg",T2=total(c),ts=c.temps,hot=Math.max(...ts),cold=Math.min(...ts),nu=c.unis.length;
+  $("glK").innerHTML=[["Budget moyen",eur(T2),"par mois, loyer compris"],["Vol depuis Paris",c.time.replace("env. ",""),c.direct?"vol direct possible":"avec escale"],["Températures",cold+"° à "+hot+"°","de l'hiver à l'été"],["Universités",String(nu),"détaillées dans la fiche"]].map(k=>`<div class="gk"><span>${esc(k[0])}</span><b class="num">${esc(k[1])}</b><small>${esc(k[2])}</small></div>`).join("");
+  $("glP").innerHTML=[[c.id+"-v.jpg","Sortir",c.life.out],[c.id+"-home.jpg","Se loger",c.life.home],[alt(c.id+"-clim.jpg"),"Climat",c.clim.split(". ")[0].replace(/\.$/,"")]].map((p,i)=>`<figure class="gp${i==2&&!ok.has(c.id+"-clim.jpg")?" gp-alt":""}"><img src="img/${p[0]}" alt="" loading="lazy" decoding="async"><figcaption><b>${esc(p[1])}</b><span>${esc(p[2])}</span></figcaption></figure>`).join("")}
  const hs=c.house,ease=["","Facile à trouver","Moyennement facile","Difficile à trouver"][hs.lvl],rng=a=>a?`${a[0].toLocaleString("fr-FR")} à ${eur(a[1])}`:"Rare";
  $("fHouse").innerHTML=`<div class="ease l${hs.lvl}"><span class="meter"><i></i><i></i><i></i></span><b>${ease}</b></div><div class="ptiles">${[["Chambre en colocation",hs.room],["Studio",hs.studio],["Résidence universitaire",hs.dorm],["Chez l'habitant",hs.host]].map(t=>`<div class="pt${t[1]?"":" na"}"><span>${t[0]}</span><b>${esc(rng(t[1]))}</b>${t[1]?"<small>par mois</small>":"<small>peu courant</small>"}</div>`).join("")}</div><p class="src">${hs.roomSrc?`Chambre : loyer médian de ${esc(eur(hs.roomMed))} (${esc(hs.roomSrc)}), fourchette à plus ou moins 15 %.`:`Chambre : estimation à partir des loyers de studios, faute de relevé public pour cette ville.`} Studio : livingcost.org, juin 2026.</p><div class="hfacts"><p class="fact"><b>Ce que font la plupart des étudiants</b>${esc(hs.usual)}</p><p class="fact"><b>Où chercher</b>${esc(hs.where)}</p><p class="fact"><b>Conseil</b>${esc(hs.tip)}</p></div>`;
  $("fFly").innerHTML=`<div class="price">${esc(flyTxt(c))}</div><small style="color:var(--mute);font-size:13px;font-weight:600">aller-retour depuis Paris, classe éco</small><br><span class="pill ${c.direct?"ok":""}">${c.direct?"Vol direct possible":"Au moins une escale"}, ${esc(c.time)}</span>${c.flyM?`<div class="fseas"><div><span>Moins cher en ${esc(c.flyM[0])}</span><b>${esc(eur(c.flyLo[0]))} à ${esc(eur(c.flyLo[1]))}</b></div><div><span>Plus cher en ${esc(c.flyM[1])}</span><b>${esc(eur(c.flyHi[0]))} à ${esc(eur(c.flyHi[1]))}</b></div></div>`:""}<p class="fact"><b>Compagnies</b>${esc(c.air)}</p><p class="fact"><b>Astuce</b>${esc(c.flyTip)}</p><p class="src">Prix habituels aller-retour relevés sur Google Flights en novembre 2026${c.id==="hsinchu"?", vers Taipei-Taoyuan":""}.</p>`;
@@ -2127,9 +2149,9 @@ addEventListener("hashchange",()=>{const c=C.find(x=>"#"+x.id===location.hash);i
  const schUI=()=>{const s=SS.value,b=$("schB"),l=$("schL"),t=$("tPart");document.body.classList.toggle("sch-on",!!s);
   if(!s){b.hidden=l.hidden=t.hidden=true;return}
   const cs=C.filter(c=>npart(c,s)>0),nu=cs.reduce((a,c)=>a+npart(c,s),0);
-  b.hidden=false;b.innerHTML=`<span class="schb-k">Version ${esc(ECON[s])}</span><b class="num">${nu} universités partenaires dans ${cs.length} villes</b><button type="button" id="schX">Voir toutes les écoles</button>`;
+  b.hidden=true;b.innerHTML=`<span class="schb-k">Version ${esc(ECON[s])}</span><b class="num">${nu} universités partenaires dans ${cs.length} villes</b><button type="button" id="schX">Voir toutes les écoles</button>`;
   $("schX").onclick=()=>{SS.value="";SS.dispatchEvent(new Event("change"))};
-  l.hidden=false;l.textContent="Copier le lien "+ECON[s];t.hidden=false;t.textContent="Partenaires "+ECON[s];t.setAttribute("aria-pressed",F.part)};
+  l.hidden=true;l.textContent="Copier le lien "+ECON[s];t.hidden=false;t.textContent="Partenaires "+ECON[s];t.setAttribute("aria-pressed",F.part)};
  $("schL").addEventListener("click",async e=>{const bt=e.currentTarget,url=location.origin+location.pathname+"?ecole="+SLUG(SS.value);let ok=false;try{await navigator.clipboard.writeText(url);ok=true}catch(_){}
   bt.textContent=ok?"Lien copié":url;setTimeout(()=>schUI(),2500)});
  $("tPart").addEventListener("click",e=>{F.part=!F.part;e.currentTarget.setAttribute("aria-pressed",F.part);renderCards()});
