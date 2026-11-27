@@ -731,6 +731,14 @@ a.src{text-decoration:underline;text-underline-offset:3px}
 .up small{width:100%;font-size:12px;font-weight:700;color:var(--mute)}
 .up i{font-style:normal;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;border:1px solid var(--line)}
 .up i.me{background:#ff6b9e;border-color:#ff6b9e;color:#fff}
+.schb{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:0 0 16px;padding:12px 16px;border-radius:14px;background:rgba(255,107,158,.16);border:1px solid rgba(255,107,158,.45)}
+.schb-k{width:100%;font-size:12px;font-weight:800;letter-spacing:.02em;color:#ffb3cd}
+.schb b{font-size:17px}
+.schb button{margin-left:auto;background:none;border:0;color:inherit;font:inherit;font-size:13px;text-decoration:underline;text-underline-offset:3px;opacity:.8;cursor:pointer;padding:4px 0}
+.schb button:hover{opacity:1}
+.schl{margin-top:-4px;background:none;border:0;color:#ffb3cd;font:inherit;font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:6px 0;text-align:left;word-break:break-all}
+.schl:hover{color:#fff}
+.card .cp{display:inline-block;align-self:flex-start;margin-top:4px;font-size:11.5px;font-weight:800;padding:2px 8px;border-radius:999px;background:#ff6b9e;color:#fff}
 </style>
 </head>
 <body class="m">
@@ -760,12 +768,13 @@ a.src{text-decoration:underline;text-underline-offset:3px}
 <div>
 <h1>Choisis où partir étudier</h1>
 <p class="lead">Règle ce qui compte pour toi, les villes qui correspondent apparaissent tout de suite.</p>
+<div class="schb" id="schB" hidden></div>
 <form class="finder" id="finder" onsubmit="return false">
 <label class="fr"><span class="fl">Budget max par mois<b id="fBv" class="num"></b></span><input type="range" id="fB" min="500" max="2500" step="50" value="1200"></label>
 <div class="fr"><span class="fl">Soleil</span><div class="fseg" data-k="sun"><button type="button" data-v="0" aria-pressed="true">Peu importe</button><button type="button" data-v="2000">Ensoleillé</button><button type="button" data-v="2500">Très ensoleillé</button></div></div>
 <div class="fr"><span class="fl">Vol depuis Paris</span><div class="fseg" data-k="fly"><button type="button" data-v="99" aria-pressed="true">Peu importe</button><button type="button" data-v="3">Moins de 3 h</button><button type="button" data-v="13">Moins de 13 h</button></div></div>
 <div class="fr"><span class="fl">Bonus</span><div class="fseg multi" data-k="opt"><button type="button" data-v="en" aria-pressed="false">Anglais suffit</button><button type="button" data-v="pvt" aria-pressed="false">PVT possible</button><button type="button" data-v="safe" aria-pressed="false">Très sûr</button></div></div>
-<label class="fr fsch"><span class="fl">Mon école</span><select id="fSch"><option value="">Toutes les écoles</option></select></label>
+<label class="fr fsch"><span class="fl">Mon école</span><select id="fSch"><option value="">Toutes les écoles</option></select></label><button type="button" class="schl" id="schL" hidden></button>
 </form>
 <div class="chips" id="quick" role="group" aria-label="Destinations rapides"></div>
 </div>
@@ -843,6 +852,7 @@ a.src{text-decoration:underline;text-underline-offset:3px}
 <button class="chip plain" id="tPvt" aria-pressed="false">PVT possible</button>
 <button class="chip plain" id="tDirect" aria-pressed="false">Vol direct</button>
 <button class="chip plain" id="tEn" aria-pressed="false">Anglais suffit</button>
+<button class="chip plain" id="tPart" aria-pressed="true" hidden></button>
 <select id="fSort" aria-label="Trier"><option value="budget">Moins cher d'abord</option><option value="sun">Plus de soleil d'abord</option><option value="fly">Billet le moins cher</option><option value="time">Plus proche d'abord</option></select>
 </div>
 <div class="cards tilt" id="cards"></div>
@@ -1809,16 +1819,16 @@ function renderFiche(c){
 
 function countUp(el,to,fmt){if(reduce){el.textContent=fmt(to);return}const from=+(el.dataset.v||0),s=performance.now(),d=700;el.dataset.v=to;cancelAnimationFrame(el._r);const step=n=>{const f=Math.min(1,(n-s)/d),e=1-(1-f)**3;el.textContent=fmt(Math.round(from+(to-from)*e));if(f<1)el._r=requestAnimationFrame(step)};el._r=requestAnimationFrame(step)}
 function replay(){const root=document.body;root.classList.remove("swap");void root.offsetWidth;root.classList.add("swap")}
-const F={max:1800,reg:"",clim:"",pvt:false,direct:false,en:false,sort:"budget"};
+const F={max:1800,reg:"",clim:"",pvt:false,direct:false,en:false,part:true,sort:"budget"};
 const thumbs={};
 function renderCards(){
- let L=C.filter(c=>rangeOf(c)[0]<=F.max&&(!F.reg||c.reg===F.reg)&&(!F.clim||climCat(c)===F.clim)&&(!F.pvt||c.pvt)&&(!F.direct||c.direct)&&(!F.en||c.en));
+ const SCH=window.__school;let L=C.filter(c=>(!F.part||!SCH||!window.__npart||window.__npart(c,SCH)>0)&&rangeOf(c)[0]<=F.max&&(!F.reg||c.reg===F.reg)&&(!F.clim||climCat(c)===F.clim)&&(!F.pvt||c.pvt)&&(!F.direct||c.direct)&&(!F.en||c.en));
  L.sort(F.sort==="sun"?(a,b)=>b.sun-a.sun:F.sort==="time"?(a,b)=>a.h-b.h:F.sort==="fly"?(a,b)=>a.fly[0]-b.fly[0]:(a,b)=>total(a)-total(b));
  const cd=$("cards");cd.classList.remove("flip");void cd.offsetWidth;cd.classList.add("flip");
- $("count").textContent=L.length+(L.length>1?" destinations":" destination");
+ $("count").textContent=L.length+(L.length>1?" destinations":" destination")+(SCH&&F.part&&ECON[SCH]?" partenaires de "+ECON[SCH]:"");
  $("cards").innerHTML=L.length?L.map(c=>cardHTML(c)).join(""):`<div class="empty">Aucune destination ne correspond. Monte le budget ou enlève un filtre.</div>`;
 }
-function cardHTML(c){return `<button class="card" data-id="${c.id}" aria-current="${c===sel}"><span class="thumb"><img src="img/${c.id}-s.jpg" alt="" loading="lazy" decoding="async"><span class="code">${c.code}</span></span><span class="body"><span class="name">${flagImg(c)}<h3>${esc(c.city)}</h3></span><span class="meta">${esc(c.country)}, vol ${esc(c.time)}</span><span class="row"><span class="rb"><b>${rangeOf(c).map(v=>v.toLocaleString("fr-FR")).join(" à ")} €</b>par mois</span><span><b>${esc(eur(c.fly[0]))}</b>billet dès</span><span><b>${c.sun.toLocaleString("fr-FR")} h</b>de soleil</span></span></span></button>`}
+function cardHTML(c){return `<button class="card" data-id="${c.id}" aria-current="${c===sel}"><span class="thumb"><img src="img/${c.id}-s.jpg" alt="" loading="lazy" decoding="async"><span class="code">${c.code}</span></span><span class="body"><span class="name">${flagImg(c)}<h3>${esc(c.city)}</h3></span><span class="meta">${esc(c.country)}, vol ${esc(c.time)}</span>${window.__school&&window.__npart&&window.__npart(c,window.__school)?`<span class="cp">${window.__npart(c,window.__school)} université${window.__npart(c,window.__school)>1?"s":""} partenaire${window.__npart(c,window.__school)>1?"s":""}</span>`:""}<span class="row"><span class="rb"><b>${rangeOf(c).map(v=>v.toLocaleString("fr-FR")).join(" à ")} €</b>par mois</span><span><b>${esc(eur(c.fly[0]))}</b>billet dès</span><span><b>${c.sun.toLocaleString("fr-FR")} h</b>de soleil</span></span></span></button>`}
 function renderSim(c){const L=C.filter(x=>x!==c).sort((a,b)=>((a.reg!==c.reg)-(b.reg!==c.reg))*2000+Math.abs(total(a)-total(c))-Math.abs(total(b)-total(c))).slice(0,4);$("sim").innerHTML=L.map(cardHTML).join("");$("simTitle").textContent="Si tu hésites avec "+c.city}
 function renderQuick(){$("quick").innerHTML=C.slice(0,8).map(c=>`<button class="chip" data-id="${c.id}" aria-pressed="${c===sel}">${flagImg(c)}${esc(c.city)}</button>`).join("")}
 function select(c,anim){const first=!sel._shown;sel=c;c._shown=true;ARC=arcPts(PARIS,c,90);t0=performance.now();renderPass(c);renderFiche(c);window.__renderSub&&window.__renderSub(c);renderSim(c);renderCards();renderQuick();window.__boardSel&&window.__boardSel();if(!first)replay();if(anim)focus(c);if(location.hash!=="#"+c.id)history.replaceState(null,"","#"+c.id)}
@@ -2006,7 +2016,21 @@ addEventListener("hashchange",()=>{const c=C.find(x=>"#"+x.id===location.hash);i
  const SS=$("fSch");SS.insertAdjacentHTML("beforeend",[["c","Écoles de commerce"],["i","Écoles d'ingénieurs"]].map(g=>`<optgroup label="${g[1]}">${ECOL.filter(x=>x[2]===g[0]).map(x=>`<option value="${x[0]}">${esc(x[1])}</option>`).join("")}</optgroup>`).join(""));
  try{const v=localStorage.getItem("escale-school");if(v&&ECON[v])SS.value=v}catch(_){}
  const npart=(c,s)=>c.unis.filter((u,i)=>(PART[c.id+"/"+i]||[]).includes(s)).length;
- SS.addEventListener("change",()=>{try{localStorage.setItem("escale-school",SS.value)}catch(_){};window.__school=SS.value;run();window.__renderSub&&sel&&window.__renderSub(sel)});window.__school=SS.value;
+ const SLUG=s=>ECON[s].normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+ const qS=(new URLSearchParams(location.search).get("ecole")||"").toLowerCase(),fromURL=qS?(ECOL.map(x=>x[0]).find(k=>k.toLowerCase()===qS||SLUG(k)===qS)||""):"";
+ if(fromURL){SS.value=fromURL;try{localStorage.setItem("escale-school",fromURL)}catch(_){}}
+ window.__npart=npart;
+ const setURL=s=>{const u=new URL(location.href);s?u.searchParams.set("ecole",SLUG(s)):u.searchParams.delete("ecole");history.replaceState(null,"",u.pathname+u.search+u.hash)};
+ const schUI=()=>{const s=SS.value,b=$("schB"),l=$("schL"),t=$("tPart");document.body.classList.toggle("sch-on",!!s);
+  if(!s){b.hidden=l.hidden=t.hidden=true;return}
+  const cs=C.filter(c=>npart(c,s)>0),nu=cs.reduce((a,c)=>a+npart(c,s),0);
+  b.hidden=false;b.innerHTML=`<span class="schb-k">Version ${esc(ECON[s])}</span><b class="num">${nu} universités partenaires dans ${cs.length} villes</b><button type="button" id="schX">Voir toutes les écoles</button>`;
+  $("schX").onclick=()=>{SS.value="";SS.dispatchEvent(new Event("change"))};
+  l.hidden=false;l.textContent="Copier le lien "+ECON[s];t.hidden=false;t.textContent="Partenaires "+ECON[s];t.setAttribute("aria-pressed",F.part)};
+ $("schL").addEventListener("click",async e=>{const bt=e.currentTarget,url=location.origin+location.pathname+"?ecole="+SLUG(SS.value);let ok=false;try{await navigator.clipboard.writeText(url);ok=true}catch(_){}
+  bt.textContent=ok?"Lien copié":url;setTimeout(()=>schUI(),2500)});
+ $("tPart").addEventListener("click",e=>{F.part=!F.part;e.currentTarget.setAttribute("aria-pressed",F.part);renderCards()});
+ SS.addEventListener("change",()=>{try{localStorage.setItem("escale-school",SS.value)}catch(_){};window.__school=SS.value;setURL(SS.value);schUI();run();renderCards();window.__renderSub&&sel&&window.__renderSub(sel)});window.__school=SS.value;if(SS.value&&!fromURL)setURL(SS.value);schUI();renderCards();
  function run(){const max=+B.value;$("fBv").textContent=max.toLocaleString("fr-FR")+" €";
   B.style.setProperty("--p",((max-B.min)/(B.max-B.min)*100).toFixed(1)+"%");
   const ok=C.filter(c=>rangeOf(c)[0]<=max&&c.sun>=st.sun&&c.h<=st.fly&&(!st.opt.has("en")||c.en)&&(!st.opt.has("pvt")||c.pvt)&&(!st.opt.has("safe")||safeOk(c))&&(!SS.value||npart(c,SS.value)>0))
