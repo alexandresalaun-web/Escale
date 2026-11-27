@@ -2247,6 +2247,7 @@ document.addEventListener('pointerover',e=>{const t=e.target.closest&&e.target.c
   if(a.dataset.a==="dest"){$("destinations").scrollIntoView({behavior:reduce?"auto":"smooth"});return}
   if(a.dataset.a==="link"){const slug=ECON[cur].normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");const url=location.origin+location.pathname+"?ecole="+slug+"#ecoles";let ok=false;try{await navigator.clipboard.writeText(url);ok=true}catch(_){}a.textContent=ok?"Lien copié":url;setTimeout(()=>a.textContent="Copier le lien",2500)}});
  if(SS){SS.addEventListener("change",()=>{if(SS.value!==cur)show(SS.value)});if(SS.value)show(SS.value)}
+ try{const nv=performance.getEntriesByType("navigation")[0];if(nv&&/#ecoles$/.test(nv.name))setTimeout(()=>$("ecoles").scrollIntoView(),400)}catch(_){}
 }}
 
 }
