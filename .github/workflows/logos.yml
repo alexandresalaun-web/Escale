@@ -1,8 +1,6 @@
 name: Télécharger les logos
 on:
   workflow_dispatch:
-  push:
-    paths: ['tools/logos_list.json','tools/fetch_logos.py','.github/workflows/logos.yml']
 permissions:
   contents: write
 jobs:
@@ -14,6 +12,7 @@ jobs:
         with: {python-version: '3.12'}
       - run: pip install pillow
       - run: python tools/fetch_logos.py
+      # Les PNG obtenus servent de source : le site utilise les paquets compressés de logos/*.json
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
