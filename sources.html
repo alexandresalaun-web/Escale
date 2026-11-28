@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Sources, méthode et confidentialité · Escale</title>
+<meta name="description" content="D'où viennent les chiffres d'Escale, quand ils ont été vérifiés, et ce que le site fait de tes données.">
+<meta name="theme-color" content="#0b1030">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:Archivo;font-weight:500 900;font-stretch:100% 125%;font-display:swap;src:url(fonts/archivo-l.woff2) format('woff2')}
+@font-face{font-family:Archivo;font-weight:500 900;font-stretch:100% 125%;font-display:swap;src:url(fonts/archivo-x.woff2) format('woff2');unicode-range:U+0100-024F}
+@font-face{font-family:Manrope;font-weight:400 800;font-display:swap;src:url(fonts/manrope-l.woff2) format('woff2')}
+@font-face{font-family:Manrope;font-weight:400 800;font-display:swap;src:url(fonts/manrope-x.woff2) format('woff2');unicode-range:U+0100-024F}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#0b1030;color:#e9ecff;font-family:Manrope,system-ui,sans-serif;font-size:16px;line-height:1.6}
+a{color:#ff7aa9;text-underline-offset:3px}
+a:focus-visible{outline:3px solid #ff2f7a;outline-offset:3px;border-radius:4px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:880px;margin:0 auto;padding:20px 24px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:Archivo,sans-serif;font-weight:800;font-stretch:112%;font-size:20px}
+.logo svg{width:28px;height:28px}
+.back{color:#fff;text-decoration:none;font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,.22);padding:8px 16px;border-radius:999px}
+main{max-width:880px;margin:0 auto;padding:24px 24px 80px}
+h1{font-family:Archivo,sans-serif;font-weight:900;font-stretch:118%;font-size:clamp(34px,6vw,56px);line-height:1;letter-spacing:-.04em;margin:24px 0 16px;max-width:14ch}
+.lead{color:#a9b2d8;font-size:18px;max-width:60ch;margin:0 0 40px}
+h2{font-family:Archivo,sans-serif;font-weight:800;font-stretch:112%;font-size:24px;letter-spacing:-.02em;margin:56px 0 16px}
+p,li{color:#c8cfee;max-width:68ch}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 0}
+th,td{text-align:left;vertical-align:top;padding:12px 12px 12px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+th{color:#8f98c4;font-weight:600;font-size:13px}
+td:first-child{color:#fff;font-weight:700;width:30%}
+td small{display:block;color:#8f98c4;font-size:13px;margin-top:2px}
+.card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px 24px;margin:16px 0}
+.card h3{margin:0 0 6px;font-size:16px;color:#fff}
+.card p{margin:0}
+code{font-size:14px;background:rgba(255,255,255,.08);padding:2px 6px;border-radius:6px;color:#fff}
+.note{color:#8f98c4;font-size:14px}
+@media (max-width:640px){table,tbody,tr,td{display:block;width:100%}thead{display:none}tr{border-bottom:1px solid rgba(255,255,255,.1);padding:12px 0}td{border:0;padding:2px 0}td:first-child{width:100%}}
+</style>
+</head>
+<body>
+<header class="top">
+<a class="logo" href="./"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#ff2f7a"/><path d="M8 18.5l16-7-4.5 9.5-3-3-3.5 3 .5-4z" fill="#fff"/></svg>Escale</a>
+<a class="back" href="./">Retour au site</a>
+</header>
+<main>
+<h1>Sources, méthode et confidentialité</h1>
+<p class="lead">D'où viennent les chiffres d'Escale, quand ils ont été vérifiés, et ce que le site fait de tes données. Dernière vérification complète : novembre 2026.</p>
+
+<h2>D'où viennent les chiffres</h2>
+<table>
+<thead><tr><th>Donnée</th><th>Source et date</th></tr></thead>
+<tbody>
+<tr><td>Coût de la vie, bière, menu du midi</td><td>livingcost.org, relevé de juin 2026, converti à 1 $ = 0,865 €.<small>Moyennes par ville, hors loyer.</small></td></tr>
+<tr><td>Loyer d'une chambre</td><td>Médianes publiées par HousingAnywhere (10 villes), SpareRoom (2), Spotahome (1) et Rentals.ca (3), 3e trimestre 2026. Pour les autres villes : fourchettes estimées à partir des annonces en ligne.<small>La source exacte s'affiche dans chaque guide Se loger.</small></td></tr>
+<tr><td>Vols depuis Paris</td><td>Google Flights, prix habituels d'un aller-retour en classe éco, relevés en novembre 2026.<small>Indicatif : les prix varient selon la date de réservation.</small></td></tr>
+<tr><td>Caution, enregistrement, âge légal</td><td>Sites officiels de chaque pays (lois sur le logement, services d'immigration, mairies), consultés en novembre 2026.</td></tr>
+<tr><td>Visas et sécurité</td><td>France Diplomatie, Conseils aux voyageurs, et sites officiels des ambassades, novembre 2026.</td></tr>
+<tr><td>Bars, clubs et lieux cités</td><td>Ouverture vérifiée en novembre 2026 sur les sites des lieux, Resident Advisor, Time Out et les offices de tourisme.<small>Les lieux de sortie changent vite : vérifie avant d'y aller.</small></td></tr>
+<tr><td>Climat</td><td>Normales de températures publiées sur Wikipédia. Durée du jour calculée à partir de la latitude de chaque ville.</td></tr>
+<tr><td>Accords d'échange</td><td>Listes de partenaires publiées par les écoles sur leur site, relevées en novembre 2026.</td></tr>
+<tr><td>Photos</td><td>Unsplash, licence libre. Les auteurs sont crédités en bas de la page d'accueil.</td></tr>
+</tbody>
+</table>
+<p class="note">Escale est un outil de comparaison, pas une source officielle. Avant de signer un bail ou de déposer un dossier, vérifie toujours auprès de ton école, de l'université d'accueil et des sites officiels.</p>
+
+<h2>Ce que le site fait de tes données</h2>
+<div class="card"><h3>Pas de compte, pas de cookie, pas de mesure d'audience</h3><p>Escale ne te demande rien, ne dépose aucun cookie et n'utilise aucun outil de statistiques ou de publicité. Le formulaire Contribuer n'envoie rien : il affiche seulement un aperçu sur ton écran.</p></div>
+<div class="card"><h3>Ce qui reste sur ton appareil</h3><p>Pour te faire gagner du temps, le site garde quelques préférences dans le stockage de ton navigateur : ton école (<code>escale-school</code>), tes villes enregistrées (<code>escale-plans</code>), le type de carte choisi (<code>escale-map</code>) et l'ambiance choisie pour le haut de page (<code>escale-banner</code>). Ces informations ne quittent jamais ton appareil. Pour les effacer, vide les données du site dans les réglages de ton navigateur.</p></div>
+<div class="card"><h3>Les services extérieurs</h3><p>Certains éléments viennent d'autres sites, qui voient alors ton adresse IP comme pour toute page web :</p>
+<ul>
+<li>les logos des universités, chargés depuis Wikipédia, sans transmettre l'adresse de la page d'origine ;</li>
+<li>la vue satellite de la carte des quartiers, fournie par Esri ;</li>
+<li>les vidéos, lues depuis YouTube en mode confidentialité renforcée, et seulement quand tu cliques dessus.</li>
+</ul>
+<p>Les polices, les photos et les données sont hébergées avec le site.</p></div>
+<div class="card"><h3>Sécurité</h3><p>Le site est servi en HTTPS et applique une politique de sécurité du contenu qui n'autorise que son propre code. Il n'a ni base de données ni serveur à lui : il n'y a donc aucune donnée personnelle à protéger de son côté.</p></div>
+
+<h2>Mentions légales</h2>
+<p><strong>Éditeur :</strong> Alexandre Salaün, étudiant. Site personnel, non commercial, sans lien officiel avec les écoles et universités citées.</p>
+<p><strong>Hébergeur :</strong> GitHub Pages, service de GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
+<p><strong>Propriété intellectuelle :</strong> les textes et la mise en page d'Escale sont la propriété de l'éditeur. Les noms et logos des établissements appartiennent à leurs propriétaires et ne sont affichés qu'à titre d'information.</p>
+<p><strong>Une erreur ?</strong> Si tu repères une donnée fausse ou datée, utilise la rubrique Contribuer du site.</p>
+</main>
+</body>
+</html>

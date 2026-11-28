@@ -2,12 +2,30 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-7Zvg9r4vq7b6EFjXtxlw4UYi0qQNb/vgX63Va2EQLe4='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.wikipedia.org https://upload.wikimedia.org https://i.ytimg.com https://server.arcgisonline.com; font-src 'self'; connect-src 'self'; frame-src https://www.youtube-nocookie.com; media-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Escale destinations d'études</title>
+<meta name="description" content="Compare 74 villes pour ton semestre ou ton année à l'étranger : budget réel, logement, climat, vols, démarches et universités partenaires. Données vérifiées.">
+<meta name="theme-color" content="#0b1030">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="https://alexandresalaun-web.github.io/Escale/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Escale">
+<meta property="og:title" content="Escale, choisis où partir étudier">
+<meta property="og:description" content="Compare 74 villes pour ton semestre ou ton année à l'étranger : budget réel, logement, climat, vols, démarches et universités partenaires. Données vérifiées.">
+<meta property="og:url" content="https://alexandresalaun-web.github.io/Escale/">
+<meta property="og:image" content="https://alexandresalaun-web.github.io/Escale/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Page d'accueil d'Escale : filtres et villes proposées">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="fonts/archivo-l.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/manrope-l.woff2" as="font" type="font/woff2" crossorigin>
 <style>@font-face{font-family:Archivo;font-style:normal;font-display:swap;font-weight:500 900;font-stretch:100% 125%;src:url(fonts/archivo-l.woff2) format('woff2');unicode-range:U+0020-007E,U+00A0-00FF,U+0131,U+0152-0153,U+2013-2014,U+2018-2019,U+201C-201D,U+2022,U+2026,U+2039,U+20AC,U+2212}@font-face{font-family:Archivo;font-style:normal;font-display:swap;font-weight:500 900;font-stretch:100% 125%;src:url(fonts/archivo-x.woff2) format('woff2');unicode-range:U+0101,U+0105,U+010C-010D,U+0110-0111,U+011B,U+011F,U+012B,U+0130,U+0141-0142,U+0144,U+014D,U+0151,U+0159-015B,U+015F-0161,U+0169,U+017B,U+017D-017E,U+01A1,U+20A9}@font-face{font-family:Manrope;font-style:normal;font-display:swap;font-weight:400 800;src:url(fonts/manrope-l.woff2) format('woff2');unicode-range:U+0020-007E,U+00A0-00FF,U+0131,U+0152-0153,U+2013-2014,U+2018-2019,U+201C-201D,U+2022,U+2026,U+2039,U+20AC,U+2212}@font-face{font-family:Manrope;font-style:normal;font-display:swap;font-weight:400 800;src:url(fonts/manrope-x.woff2) format('woff2');unicode-range:U+0101,U+0105,U+010C-010D,U+0110-0111,U+011B,U+011F,U+012B,U+0130,U+0141-0142,U+0144,U+014D,U+0151,U+0159-015B,U+015F-0161,U+0169,U+017B,U+017D-017E,U+01A1,U+20A9}</style>
-<style>
+<style>[hidden]{display:none!important}
 /* VOICE everyday travel and study, airy and sure of itself, like an airline's best product page
    IDEA a flight to your exchange city: departure board codes, a boarding pass, a postcard from each city, a route on a glossy globe
    PICTURE the draggable electric-blue globe with Paris to city flight; every city gets an illustrated postcard of its landmark
@@ -887,7 +905,7 @@ body.gd-on{overflow:hidden}
 @media(max-width:900px){.gd-stats,.gd-seasons{grid-template-columns:repeat(2,minmax(0,1fr))}.gd-zones,.gd-qs{grid-template-columns:minmax(0,1fr)}.gd-tips,.gd-where{grid-template-columns:minmax(0,1fr)}.gd-hero{margin:12px 12px 0;min-height:320px}.gd-hero h2{font-size:38px}.gd-hero>div{padding:22px}.gd-hero p{font-size:15.5px}}
 @media(max-width:520px){.gd-top{padding:10px 12px}.gd-tabs button{padding:0 10px;font-size:12.5px}.gd-back{padding:0 10px;font-size:0}.gd-back::before{font-size:22px;margin:0}.gd-temps{gap:3px;padding:12px 8px}.gd-temps span{font-size:11px}.gd-spots li{grid-template-columns:30px 1fr}.gd-spots .n{width:30px;height:30px}.gd-spots a{grid-column:2;justify-self:start}}
 @media(prefers-reduced-motion:reduce){.gd,.gd-temps i{animation:none}}
-</style>
+input[type=range]:focus-visible{outline:3px solid var(--pink)!important;outline-offset:4px;border-radius:8px}</style>
 </head>
 <body class="m">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -917,7 +935,7 @@ body.gd-on{overflow:hidden}
 <h1>Choisis où partir étudier</h1>
 <p class="lead">Règle ce qui compte pour toi, les villes qui correspondent apparaissent tout de suite.</p>
 <div class="schb" id="schB" hidden></div>
-<form class="finder" id="finder" onsubmit="return false">
+<form class="finder" id="finder">
 <label class="fr"><span class="fl">Budget max par mois<b id="fBv" class="num"></b></span><input type="range" id="fB" min="500" max="2500" step="50" value="1200"></label>
 <div class="fr"><span class="fl">Soleil</span><div class="fseg" data-k="sun"><button type="button" data-v="0" aria-pressed="true">Peu importe</button><button type="button" data-v="2000">Ensoleillé</button><button type="button" data-v="2500">Très ensoleillé</button></div></div>
 <div class="fr"><span class="fl">Vol depuis Paris</span><div class="fseg" data-k="fly"><button type="button" data-v="99" aria-pressed="true">Peu importe</button><button type="button" data-v="3">Moins de 3 h</button><button type="button" data-v="13">Moins de 13 h</button></div></div>
@@ -965,7 +983,7 @@ body.gd-on{overflow:hidden}
 <div class="panel full lifep" data-tab="vie" id="s-vie"><div class="night" id="fNight"></div><div><h3><svg><use href="#i-people"/></svg>Vie étudiante</h3><div class="life" id="fLife"></div></div></div>
 <div class="panel" data-tab="apercu logement" id="s-carte"><h3><svg><use href="#i-pin"/></svg>Carte des quartiers</h3><div class="qmap"><div class="qmv" id="qMap"></div><ol class="qlist" id="qList"></ol></div><p class="note2">Loyer estimé pour une chambre en colocation, selon le quartier. Distances à vol d'oiseau jusqu'au campus le plus proche.</p></div><div class="panel" data-tab="logement" id="s-quart"><h3><svg><use href="#i-pin"/></svg>Quartiers où loger</h3><ul class="list" id="fQuart"></ul></div>
 <div class="panel full" data-tab="logement" id="s-hlinks"><h3><svg><use href="#i-home"/></svg>Où chercher un logement</h3><div class="links" id="fHLinks"></div></div>
-<div class="panel full calc" data-tab="budget" id="s-calc"><h3><svg><use href="#i-wallet"/></svg>Calcule ton budget</h3><div class="calcg"><form class="cform" id="cForm" onsubmit="return false"><label>Logement<select id="cHouse"><option value="room">Chambre en colocation</option><option value="studio">Studio</option><option value="dorm">Résidence universitaire</option><option value="host">Chez l'habitant</option></select></label><label>Repas<select id="cFood"><option value=".8">Je cuisine surtout moi-même</option><option value="1" selected>Un mélange des deux</option><option value="1.6">Je mange souvent dehors</option></select></label><label>Sorties<select id="cOut"><option value=".6">Plutôt calme</option><option value="1" selected>Normal</option><option value="1.7">Très festif</option></select></label><label>Durée du séjour<select id="cMonths"><option value="5">Un semestre (5 mois)</option><option value="10" selected>Une année (10 mois)</option><option value="12">12 mois</option></select></label><label>Voyages dans la région <output id="cTripsOut">4</output><input type="range" id="cTrips" min="0" max="10" value="4"></label><label class="chk"><input type="checkbox" id="cAmi"> Je suis boursier CROUS (AMI, 400 € par mois, 10 mois max)</label><label class="chk"><input type="checkbox" id="cEra"> Je pars avec une bourse Erasmus+</label><label>Autres aides par mois (bourse, région, parents)<input type="number" id="cAid" min="0" step="50" value="0" inputmode="numeric"></label></form><div class="cres" id="cRes"></div></div></div>
+<div class="panel full calc" data-tab="budget" id="s-calc"><h3><svg><use href="#i-wallet"/></svg>Calcule ton budget</h3><div class="calcg"><form class="cform" id="cForm"><label>Logement<select id="cHouse"><option value="room">Chambre en colocation</option><option value="studio">Studio</option><option value="dorm">Résidence universitaire</option><option value="host">Chez l'habitant</option></select></label><label>Repas<select id="cFood"><option value=".8">Je cuisine surtout moi-même</option><option value="1" selected>Un mélange des deux</option><option value="1.6">Je mange souvent dehors</option></select></label><label>Sorties<select id="cOut"><option value=".6">Plutôt calme</option><option value="1" selected>Normal</option><option value="1.7">Très festif</option></select></label><label>Durée du séjour<select id="cMonths"><option value="5">Un semestre (5 mois)</option><option value="10" selected>Une année (10 mois)</option><option value="12">12 mois</option></select></label><label>Voyages dans la région <output id="cTripsOut">4</output><input type="range" id="cTrips" min="0" max="10" value="4"></label><label class="chk"><input type="checkbox" id="cAmi"> Je suis boursier CROUS (AMI, 400 € par mois, 10 mois max)</label><label class="chk"><input type="checkbox" id="cEra"> Je pars avec une bourse Erasmus+</label><label>Autres aides par mois (bourse, région, parents)<input type="number" id="cAid" min="0" step="50" value="0" inputmode="numeric"></label></form><div class="cres" id="cRes"></div></div></div>
 <div class="panel full" data-tab="demarches" id="s-prep"><h3><svg><use href="#i-pass"/></svg>Avant de partir</h3><div id="fPrep"></div></div><div class="panel s2" data-tab="demarches" id="s-dlinks"><h3><svg><use href="#i-pass"/></svg>Visa et liens officiels</h3><div class="links" id="fDLinks"></div></div>
 <div class="panel" data-tab="demarches" id="s-pvt"><h3><svg><use href="#i-plane"/></svg>Après les études</h3><div id="fPvt"></div></div>
 
@@ -1007,7 +1025,7 @@ body.gd-on{overflow:hidden}
 <button class="chip plain" id="tPvt" aria-pressed="false">PVT possible</button>
 <button class="chip plain" id="tDirect" aria-pressed="false">Vol direct</button>
 <button class="chip plain" id="tEn" aria-pressed="false">Anglais suffit</button>
-<button class="chip plain" id="tPart" aria-pressed="true" hidden></button>
+<button class="chip plain" id="tPart" aria-pressed="true" aria-label="Seulement les partenaires de mon école" hidden></button>
 <select id="fSort" aria-label="Trier"><option value="budget">Moins cher d'abord</option><option value="sun">Plus de soleil d'abord</option><option value="fly">Billet le moins cher</option><option value="time">Plus proche d'abord</option></select>
 </div>
 <div class="cards tilt" id="cards"></div>
@@ -1032,7 +1050,7 @@ body.gd-on{overflow:hidden}
 
 <footer class="band">
 <div class="wrap">
-<p>Chiffres indicatifs 2026 (budget pour une chambre ou une colocation, billets aller-retour en classe éco réservés quelques mois avant), à vérifier avant de partir. Sources à consulter : Numbeo, France Diplomatie, Campus France, sites officiels des bourses et des ambassades, pvtistes.net, comparateurs de vols.</p>
+<p>Chiffres indicatifs 2026, vérifiés en novembre 2026 : à confirmer auprès de ton école et des sites officiels avant de partir. <a href="sources.html">Sources, méthode et confidentialité</a></p>
 <p>Escale, version 2</p>
 </div>
 <div class="wrap"><details class="credits"><summary>Crédits photos</summary><p>Photos libres de droits provenant d'Unsplash. Merci à <span id="credits"></span></p></details></div>
@@ -1880,7 +1898,7 @@ function openGuide(c,k,push=true){const G=GUIDE[c.id];if(!G||!G[k])return;if(typ
   <p class="gd-note">${esc(g.trips)}</p>`}
  box.innerHTML=`<div class="gd-top"><button type="button" class="gd-back" data-close>Retour à la fiche</button><nav class="gd-tabs" aria-label="Guides de ${esc(c.city)}">${tabs}</nav></div>
  <header class="gd-hero"><img src="img/${img}" alt=""><div><span>${esc(c.city)}, ${esc(c.country)}</span><h2 id="gdT">${GKEYS[k]} à ${esc(c.city)}</h2><p>${esc(g.lead)}</p></div></header>
- <div class="gd-body">${body}<p class="src">${esc(g.src)}</p></div>`;
+ <div class="gd-body">${body}<p class="src">${esc(g.src)}${k==="loger"?" "+(c.house&&c.house.roomSrc?`Chambre en colocation : médiane de ${c.house.roomMed.toLocaleString("fr-FR")} € (${c.house.roomSrc}), fourchette à ±15 %. Studio et résidence : estimations à partir des annonces.`:"Loyers : estimations à partir des annonces en ligne, à confirmer sur les plateformes citées."):""}</p></div>`;
  box.hidden=false;document.body.classList.add("gd-on");box.scrollTop=0;
  if(push)history.pushState({g:k},"","#"+c.id+"/"+k);else history.replaceState({g:k},"","#"+c.id+"/"+k);
  box.querySelector(".gd-back").focus({preventScroll:true})}
@@ -2424,6 +2442,7 @@ addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("guide").hidden)closeGuid
 addEventListener("popstate",()=>{const m=location.hash.match(/^#([a-z]+)\/(sortir|loger|climat)$/);if(m&&GUIDE[m[1]]){const c=C.find(x=>x.id===m[1]);if(c)openGuide(c,m[2],false)}else closeGuide(true)});
 ["pointerover","touchstart","focusin"].forEach(ev=>$("glP").addEventListener(ev,()=>{if(sel&&GUIDE[sel.id])loadGuide(sel.id).catch(()=>{})},{passive:true}));$("glP").addEventListener("click",e=>{const f=e.target.closest("[data-g]");if(f)openGuide(sel,f.dataset.g)});$("glP").addEventListener("keydown",e=>{const f=e.target.closest("[data-g]");if(f&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openGuide(sel,f.dataset.g)}});
 {const m=GHASH.match(/^#([a-z]+)\/(sortir|loger|climat)$/);if(m&&GUIDE[m[1]]&&sel.id===m[1])setTimeout(()=>openGuide(sel,m[2],false),0)}
+["finder","cForm"].forEach(id=>{const f=document.getElementById(id);if(f)f.addEventListener("submit",e=>e.preventDefault())});
 
 }
 </script>
